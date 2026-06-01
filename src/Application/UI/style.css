@@ -115,6 +115,71 @@ br {
     }
 }
 
+/* Traveling border button */
+@property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.spin-btn {
+    position: relative;
+    border-radius: 8px;
+    padding: 2px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.spin-btn::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 9px;
+    padding: 1.5px;
+    background: conic-gradient(
+        from var(--border-angle),
+        transparent 0%,
+        transparent 70%,
+        #555 80%,
+        #111 87%,
+        #555 94%,
+        transparent 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: border-travel 2s linear infinite;
+    z-index: 0;
+}
+
+@keyframes border-travel {
+    from { --border-angle: 0deg; }
+    to   { --border-angle: 360deg; }
+}
+
+.spin-btn-inner {
+    position: relative;
+    z-index: 1;
+    background: #f9f9f7;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: monospace;
+    font-size: 0.72rem;
+    color: #111;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 @keyframes scan {
     0%   { transform: translateX(-100%); }
     100% { transform: translateX(350%); }
