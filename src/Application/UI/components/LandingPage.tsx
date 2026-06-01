@@ -6,17 +6,17 @@ type Props = { onEnter: () => void };
 const experience = [
     {
         role: 'Front End Engineer',
-        company: 'BTECHNOLOGIE · Bouygues Telecom',
+        company: 'BTECHNOLOGIE · Bouygues Telecom x Accenture',
         period: 'Jan 2025 — Present',
         desc: 'Building client-facing web & mobile applications with React, Next.js, and TypeScript for Bouygues Telecom. Manage a partials system driven by a Directus headless CMS, and use AWS for backend services and asset processing.',
         logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Bouygues_Telecom_%28alt_logo%29.svg/1280px-Bouygues_Telecom_%28alt_logo%29.svg.png',
     },
     {
         role: 'Full Stack Engineer',
-        company: '1450 Factory',
+        company: '1450 Factory · Blink Pharma',
         period: 'Sep 2023 — Sep 2024',
         desc: 'Developed web and mobile applications across the full stack for clients in pharmaceuticals. Key role on blinkpharma.ma — built the original Python backend and contributed to the later migration to a Next.js fullstack architecture.',
-        logo: 'https://i.ibb.co/zWTvrR62/df0d16f8b3cb4a058cf2c0fa75f9d3f7.png',
+        logo: 'https://dharab.com/wp-content/uploads/2023/12/blinkpharma-square.png',
     },
     {
         role: 'Full Stack Engineer',
@@ -42,10 +42,28 @@ const experience = [
 ];
 
 const projects = [
-    { title: 'BaamelOS', tags: 'React · TypeScript · Design', year: '2024' },
-    { title: 'Immersive Portfolio', tags: 'Three.js · WebGL · 3D', year: '2024' },
-    { title: 'Project Three', tags: 'Node.js · API', year: '2023' },
-    { title: 'Project Four', tags: 'React · UI/UX', year: '2023' },
+    {
+        title: 'Heald — Put Yourself First',
+        tags: 'React Native · iOS · Health & Fitness',
+        year: '2025',
+        bg: '/images/heald-preview.png',
+        link: 'https://apps.apple.com/us/app/heald-put-yourself-first/id6756617487',
+    },
+    {
+        title: 'Blink Premium',
+        tags: 'React Native · iOS · Medical',
+        year: '2024',
+        bg: '/images/blink-premium-preview.png',
+        link: 'https://apps.apple.com/ma/app/blink-premium/id1482286159',
+    },
+    {
+        title: 'Debrief',
+        tags: 'FastAPI · Whisper · GPT-4o · React · Stripe',
+        year: '2026',
+        bg: null,
+        link: null,
+        wip: true,
+    },
 ];
 
 const useIsMobile = () => {
@@ -61,6 +79,11 @@ const useIsMobile = () => {
 const LandingPage: React.FC<Props> = ({ onEnter }) => {
     const isMobile = useIsMobile();
 
+    const scrollTo = (id: string) => (e: React.MouseEvent) => {
+        e.preventDefault();
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
     return (
         <>
             <div style={s.root}>
@@ -75,18 +98,18 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
                                         <span className="spin-btn-inner">✦ Try Immersive</span>
                                     </button>
                                     <div style={{ ...s.navLinks, gap: '16px' }}>
-                                        <a href="#experience" style={s.navLink}>Experience</a>
-                                        <a href="#work" style={s.navLink}>Work</a>
-                                        <a href="#contact" style={s.navLink}>Contact</a>
+                                        <a href="#experience" style={s.navLink} onClick={scrollTo('experience')}>Experience</a>
+                                        <a href="#work" style={s.navLink} onClick={scrollTo('work')}>Projects</a>
+                                        <a href="#contact" style={s.navLink} onClick={scrollTo('contact')}>Contact</a>
                                     </div>
                                 </>
                             ) : (
                                 <>
                                     <span style={s.navName}>Youssef Baamel</span>
                                     <div style={{ ...s.navLinks, gap: '28px' }}>
-                                        <a href="#experience" style={s.navLink}>Experience</a>
-                                        <a href="#work" style={s.navLink}>Work</a>
-                                        <a href="#contact" style={s.navLink}>Contact</a>
+                                        <a href="#experience" style={s.navLink} onClick={scrollTo('experience')}>Experience</a>
+                                        <a href="#work" style={s.navLink} onClick={scrollTo('work')}>Projects</a>
+                                        <a href="#contact" style={s.navLink} onClick={scrollTo('contact')}>Contact</a>
                                     </div>
                                 </>
                             )}
@@ -138,17 +161,33 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
 
                         {/* PROJECTS */}
                         <section id="work" style={s.section}>
-                            <p style={s.label}>Work</p>
-                            <div style={{ ...s.grid, gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fill, minmax(240px, 1fr))' }}>
-                                {projects.map((p) => (
-                                    <div key={p.title} style={s.projectCard}>
-                                        <div style={s.projectTop}>
-                                            <span style={s.projectTitle}>{p.title}</span>
-                                            <span style={s.projectYear}>{p.year}</span>
+                            <div style={s.labelRow}><p style={s.label}>Projects</p></div>
+                            <div style={{ ...s.grid, gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fill, minmax(280px, 1fr))' }}>
+                                {projects.map((p) => {
+                                    const card = (
+                                        <div key={p.title} style={s.projectCard}>
+                                            {p.bg && (
+                                                <>
+                                                    <img src={p.bg} alt={p.title} style={s.projectImg} />
+                                                    <div style={s.projectOverlay} />
+                                                </>
+                                            )}
+                                            <div style={{ position: p.bg ? 'absolute' : 'relative', bottom: p.bg ? 0 : undefined, left: p.bg ? 0 : undefined, right: p.bg ? 0 : undefined, padding: '20px', zIndex: 1 }}>
+                                                <div style={s.projectTop}>
+                                                    <span style={{ ...s.projectTitle, color: p.bg ? '#fff' : '#111' }}>{p.title}</span>
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                        {(p as any).wip && <span style={s.wipBadge}>WIP</span>}
+                                                        <span style={{ ...s.projectYear, color: p.bg ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.25)' }}>{p.year}</span>
+                                                    </div>
+                                                </div>
+                                                <span style={{ ...s.projectTags, color: p.bg ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.4)' }}>{p.tags}</span>
+                                            </div>
                                         </div>
-                                        <span style={s.projectTags}>{p.tags}</span>
-                                    </div>
-                                ))}
+                                    );
+                                    return p.link
+                                        ? <a key={p.title} href={p.link} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>{card}</a>
+                                        : card;
+                                })}
                             </div>
                         </section>
 
@@ -383,12 +422,30 @@ const s: { [key: string]: React.CSSProperties } = {
     },
     projectCard: {
         background: '#f9f9f7',
-        padding: '24px',
         display: 'flex',
         flexDirection: 'column',
-        gap: '8px',
         cursor: 'pointer',
         boxSizing: 'border-box',
+        position: 'relative',
+        overflow: 'hidden',
+    },
+    projectImg: {
+        width: '100%',
+        height: 'auto',
+        display: 'block',
+    },
+    projectOverlay: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: '45%',
+        background: 'linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.5) 60%, transparent 100%)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
+        zIndex: 0,
+        WebkitMaskImage: 'linear-gradient(to top, black 60%, transparent 100%)',
+        maskImage: 'linear-gradient(to top, black 60%, transparent 100%)',
     },
     projectTop: {
         display: 'flex',
@@ -400,6 +457,15 @@ const s: { [key: string]: React.CSSProperties } = {
         fontWeight: 700,
         color: '#111',
         fontFamily: 'monospace',
+    },
+    wipBadge: {
+        fontSize: '0.6rem',
+        fontFamily: 'monospace',
+        letterSpacing: '0.1em',
+        color: '#fff',
+        background: '#111',
+        borderRadius: '4px',
+        padding: '2px 7px',
     },
     projectYear: {
         fontSize: '0.7rem',
