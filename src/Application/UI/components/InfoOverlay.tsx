@@ -20,6 +20,7 @@ const InfoOverlay: React.FC<InfoOverlayProps> = ({ visible }) => {
     const [textDone, setTextDone] = useState(false);
     const [volumeVisible, setVolumeVisible] = useState(false);
     const [freeCamVisible, setFreeCamVisible] = useState(false);
+    const [backVisible, setBackVisible] = useState(false);
 
     const typeText = (
         i: number,
@@ -83,6 +84,9 @@ const InfoOverlay: React.FC<InfoOverlayProps> = ({ visible }) => {
                 setVolumeVisible(true);
                 setTimeout(() => {
                     setFreeCamVisible(true);
+                    setTimeout(() => {
+                        setBackVisible(true);
+                    }, 250);
                 }, 250);
             }, 250);
         }
@@ -106,6 +110,16 @@ const InfoOverlay: React.FC<InfoOverlayProps> = ({ visible }) => {
 
     return (
         <div style={styles.wrapper}>
+            {backVisible && (
+                <div style={styles.container}>
+                    <button
+                        style={styles.backBtn}
+                        onClick={() => window.location.reload()}
+                    >
+                        <span style={styles.arrow}>←</span>Back
+                    </button>
+                </div>
+            )}
             {nameText !== '' && (
                 <div style={styles.container}>
                     <p>{nameText}</p>
@@ -175,6 +189,25 @@ const styles: StyleSheetCSS = {
     },
     lastRowChild: {
         marginRight: 4,
+    },
+    backBtn: {
+        background: 'black',
+        color: 'white',
+        border: 'none',
+        padding: 0,
+        margin: 0,
+        fontFamily: 'monospace',
+        fontSize: 16,
+        fontWeight: 400,
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        lineHeight: 1,
+    },
+    arrow: {
+        fontSize: 20,
+        marginRight: 6,
+        lineHeight: 1,
     },
 };
 

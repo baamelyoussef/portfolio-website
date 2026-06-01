@@ -1,211 +1,156 @@
 import React, { useState } from 'react';
 import FloatingPreview from './FloatingPreview';
 
-type Props = {
-    onEnter: () => void;
-};
+type Props = { onEnter: () => void };
 
-const projects = [
+const experience = [
     {
-        id: '01',
-        title: 'BaamelOS',
-        tags: ['React', 'TypeScript', 'Design'],
-        description: 'A browser-based operating system experience.',
+        role: 'Software Engineer',
+        company: 'Company Name',
+        period: '2024 — Present',
+        desc: 'Short description of what you did and built here.',
     },
     {
-        id: '02',
-        title: 'Immersive Portfolio',
-        tags: ['Three.js', 'WebGL', '3D'],
-        description: 'A 3D interactive portfolio built in the browser.',
+        role: 'Frontend Developer',
+        company: 'Another Company',
+        period: '2022 — 2024',
+        desc: 'Short description of what you did and built here.',
     },
     {
-        id: '03',
-        title: 'Project Three',
-        tags: ['Node.js', 'API'],
-        description: 'Short description of the project goes here.',
-    },
-    {
-        id: '04',
-        title: 'Project Four',
-        tags: ['React', 'UI/UX'],
-        description: 'Short description of the project goes here.',
+        role: 'Junior Developer',
+        company: 'First Company',
+        period: '2021 — 2022',
+        desc: 'Short description of what you did and built here.',
     },
 ];
 
-const skills = [
-    { label: 'Frontend Development', items: ['React', 'TypeScript', 'Three.js', 'WebGL', 'CSS'] },
-    { label: 'Backend Development', items: ['Node.js', 'Express', 'REST APIs', 'PostgreSQL'] },
-    { label: 'Tools & Workflow', items: ['Git', 'Webpack', 'Figma', 'Docker'] },
+const projects = [
+    { title: 'BaamelOS', tags: 'React · TypeScript · Design', year: '2024' },
+    { title: 'Immersive Portfolio', tags: 'Three.js · WebGL · 3D', year: '2024' },
+    { title: 'Project Three', tags: 'Node.js · API', year: '2023' },
+    { title: 'Project Four', tags: 'React · UI/UX', year: '2023' },
 ];
 
 const LandingPage: React.FC<Props> = ({ onEnter }) => {
-    const [openSkill, setOpenSkill] = useState<number | null>(null);
+    const [top, setTop] = useState(0);
+
+    const advance = () => setTop((t) => (t + 1) % experience.length);
 
     return (
         <>
-            <div style={s.root}><div style={s.scroll}>
+            <div style={s.root}>
+                <div style={s.scroll}>
 
-                {/* NAV */}
-                <nav style={s.nav}>
-                    <span style={s.navLogo}>YB</span>
-                    <div style={s.navLinks}>
-                        <a href="#work" style={s.navLink}>Work</a>
-                        <a href="#skills" style={s.navLink}>Skills</a>
-                        <a href="#about" style={s.navLink}>About</a>
-                        <a href="#contact" style={s.navLink}>Contact</a>
-                        <GlassButton onClick={onEnter}>Enter Experience →</GlassButton>
-                    </div>
-                </nav>
-
-                {/* HERO */}
-                <section style={s.hero}>
-                    <p style={s.heroEyebrow}>Software Engineer — Open to full-time roles</p>
-                    <h1 style={s.heroHeading}>
-                        Hi, I'm{' '}
-                        <span style={s.heroName}>Youssef Baamel</span> —<br />
-                        I build things for the web.
-                    </h1>
-                    <p style={s.heroSub}>
-                        I design and develop web experiences, from polished UIs
-                        to immersive 3D environments in the browser.
-                    </p>
-                </section>
-
-                {/* WORK */}
-                <section id="work" style={s.section}>
-                    <h2 style={s.sectionLabel}>Work</h2>
-                    <div style={s.grid}>
-                        {projects.map((p) => (
-                            <div key={p.id} style={s.card}>
-                                <span style={s.cardId}>{p.id}</span>
-                                <h3 style={s.cardTitle}>{p.title}</h3>
-                                <p style={s.cardDesc}>{p.description}</p>
-                                <div style={s.tagRow}>
-                                    {p.tags.map((t) => (
-                                        <span key={t} style={s.tag}>{t}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
-                {/* SKILLS */}
-                <section id="skills" style={s.section}>
-                    <h2 style={s.sectionLabel}>Skills</h2>
-                    <div style={s.skillList}>
-                        {skills.map((sk, i) => (
-                            <div key={sk.label} style={s.skillItem}>
-                                <button
-                                    style={s.skillToggle}
-                                    onClick={() => setOpenSkill(openSkill === i ? null : i)}
-                                >
-                                    <span>{sk.label}</span>
-                                    <span style={s.skillArrow}>{openSkill === i ? '▲' : '▼'}</span>
-                                </button>
-                                {openSkill === i && (
-                                    <div style={s.skillTags}>
-                                        {sk.items.map((item) => (
-                                            <span key={item} style={s.tag}>{item}</span>
-                                        ))}
-                                    </div>
-                                )}
-                                <div style={s.divider} />
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
-                {/* ABOUT */}
-                <section id="about" style={s.section}>
-                    <h2 style={s.sectionLabel}>About</h2>
-                    <div style={s.glassBox}>
-                        <p style={s.aboutText}>
-                            I'm a software engineer passionate about building performant and
-                            visually compelling web experiences. I enjoy working across the
-                            stack — from crafting pixel-perfect UIs to architecting scalable
-                            backend systems.
-                        </p>
-                        <p style={{ ...s.aboutText, marginTop: '16px' }}>
-                            When I'm not coding, I'm exploring 3D graphics, WebGL, and
-                            interactive media — which led to building this site as an immersive
-                            portfolio experience.
-                        </p>
-                    </div>
-                </section>
-
-                {/* CONTACT */}
-                <section id="contact" style={s.sectionLast}>
-                    <h2 style={s.sectionLabel}>Contact</h2>
-                    <div style={s.glassBox}>
-                        <p style={s.contactLine}>
-                            Open to full-time opportunities and freelance projects.
-                        </p>
-                        <a href="mailto:imbaamelyoussef@gmail.com" style={s.email}>
-                            imbaamelyoussef@gmail.com
-                        </a>
-                        <div style={s.contactLinks}>
-                            <a href="https://github.com/baamelyoussef" style={s.navLink} target="_blank" rel="noreferrer">GitHub ↗</a>
-                            <a href="https://linkedin.com/in/baamelyoussef" style={s.navLink} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+                    {/* NAV */}
+                    <nav style={s.nav}><div style={s.innerFlex}>
+                        <span style={s.navName}>Youssef Baamel</span>
+                        <div style={s.navLinks}>
+                            <a href="#experience" style={s.navLink}>Experience</a>
+                            <a href="#work" style={s.navLink}>Work</a>
+                            <a href="#contact" style={s.navLink}>Contact</a>
                         </div>
-                    </div>
-                </section>
+                    </div></nav>
 
-                {/* FOOTER */}
-                <footer style={s.footer}>
-                    <span style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'monospace', fontSize: '0.8rem' }}>
-                        © {new Date().getFullYear()} Youssef Baamel
-                    </span>
-                    <GlassButton onClick={onEnter}>Enter Experience →</GlassButton>
-                </footer>
-            </div></div>
+                    <div style={s.inner}>
+                    {/* HERO */}
+                    <section style={s.hero}>
+                        <p style={s.heroIntro}>
+                            Youssef is a software engineer who builds performant,
+                            visually compelling things for the web — from polished UIs
+                            to immersive 3D experiences.
+                        </p>
+                        <p style={s.heroStatus}>Open to full-time roles</p>
+                    </section>
+
+                    {/* EXPERIENCE */}
+                    <section id="experience" style={s.section}>
+                        <div style={s.labelRow}>
+                            <p style={s.label}>Experience</p>
+                            <a href="/resume.pdf" download style={s.resumeBtn}>Download Resume ↓</a>
+                        </div>
+                        <div style={s.stackWrap} onClick={advance}>
+                            {[...experience].map((exp, i) => {
+                                const pos = (i - top + experience.length) % experience.length;
+                                return (
+                                    <div
+                                        key={exp.company}
+                                        style={{
+                                            ...s.card,
+                                            transform: pos === 0
+                                                ? 'translateX(0px) translateY(0px) rotate(0deg)'
+                                                : pos === 1
+                                                ? 'translateX(10px) translateY(-10px) rotate(1.5deg)'
+                                                : 'translateX(20px) translateY(-20px) rotate(3deg)',
+                                            opacity: pos === 0 ? 1 : pos === 1 ? 0.6 : 0.3,
+                                            zIndex: experience.length - pos,
+                                        }}
+                                    >
+                                        <div style={s.cardTop}>
+                                            <span style={s.cardRole}>{exp.role}</span>
+                                            <span style={s.cardPeriod}>{exp.period}</span>
+                                        </div>
+                                        <span style={s.cardCompany}>{exp.company}</span>
+                                        <p style={s.cardDesc}>{exp.desc}</p>
+                                        {pos === 0 && (
+                                            <span style={s.cardHint}>click to cycle ↓</span>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </section>
+
+                    {/* PROJECTS */}
+                    <section id="work" style={s.section}>
+                        <p style={s.label}>Work</p>
+                        <div style={s.grid}>
+                            {projects.map((p) => (
+                                <div key={p.title} style={s.projectCard}>
+                                    <div style={s.projectTop}>
+                                        <span style={s.projectTitle}>{p.title}</span>
+                                        <span style={s.projectYear}>{p.year}</span>
+                                    </div>
+                                    <span style={s.projectTags}>{p.tags}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* CONTACT */}
+                    <section id="contact" style={s.section}>
+                        <p style={s.label}>Contact</p>
+                        <a href="mailto:hi@youssefbaamel.com" style={s.email}>
+                            hi@youssefbaamel.com
+                        </a>
+                    </section>
+
+                    {/* FOOTER */}
+                    <footer style={s.footer}>
+                        <span style={s.footerCopy}>© {new Date().getFullYear()} Youssef Baamel</span>
+                        <div style={s.footerLinks}>
+                            <a href="https://github.com/baamelyoussef" style={s.navLink} target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="https://linkedin.com/in/baamelyoussef" style={s.navLink} target="_blank" rel="noreferrer">LinkedIn</a>
+                        </div>
+                    </footer>
+                    </div>
+
+                </div>
+            </div>
 
             <FloatingPreview onEnter={onEnter} videoSrc="/videos/preview-ix.mp4" />
         </>
     );
 };
 
-/* Reusable glass button */
-const GlassButton: React.FC<{ onClick: () => void; children: React.ReactNode }> = ({ onClick, children }) => {
-    const [hovered, setHovered] = useState(false);
-    return (
-        <button
-            style={{
-                fontFamily: 'monospace',
-                fontSize: '0.85rem',
-                color: hovered ? '#000' : '#fff',
-                backgroundColor: hovered ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.1)',
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255,255,255,0.3)',
-                borderRadius: '6px',
-                padding: '8px 20px',
-                cursor: 'pointer',
-                letterSpacing: '0.05em',
-                transition: 'background-color 0.15s, color 0.15s',
-            }}
-            onClick={onClick}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-        >
-            {children}
-        </button>
-    );
-};
-
 const s: { [key: string]: React.CSSProperties } = {
     root: {
         position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        overflow: 'hidden',
-        background: 'linear-gradient(135deg, #0d0d14 0%, #12082a 40%, #0a1020 100%)',
-        color: '#fff',
+        inset: 0,
+        background: '#f9f9f7',
+        color: '#111',
         fontFamily: 'monospace',
+        overflow: 'hidden',
         zIndex: 9999,
-        boxSizing: 'border-box',
     },
     scroll: {
         width: '100%',
@@ -213,225 +158,228 @@ const s: { [key: string]: React.CSSProperties } = {
         overflowY: 'auto',
         boxSizing: 'border-box',
     },
+    inner: {
+        maxWidth: '780px',
+        margin: '0 auto',
+        padding: '0 32px',
+        width: '100%',
+        boxSizing: 'border-box',
+    },
+    innerFlex: {
+        maxWidth: '780px',
+        margin: '0 auto',
+        padding: '0 32px',
+        width: '100%',
+        boxSizing: 'border-box',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        height: '100%',
+    },
     nav: {
         position: 'sticky',
         top: 0,
-        background: 'rgba(10,10,20,0.6)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255,255,255,0.08)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '0 48px',
-        height: '64px',
         zIndex: 100,
+        background: 'rgba(249,249,247,0.8)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderBottom: '1px solid rgba(0,0,0,0.07)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '56px',
         boxSizing: 'border-box',
     },
-    navLogo: {
-        fontWeight: 700,
-        fontSize: '1.1rem',
-        letterSpacing: '0.1em',
-        color: '#fff',
+    navName: {
+        fontSize: '0.85rem',
         fontFamily: 'monospace',
+        color: '#111',
+        letterSpacing: '0.03em',
     },
     navLinks: {
         display: 'flex',
-        alignItems: 'center',
-        gap: '32px',
+        gap: '28px',
     },
     navLink: {
-        color: 'rgba(255,255,255,0.6)',
+        color: 'rgba(0,0,0,0.4)',
         textDecoration: 'none',
-        fontSize: '0.85rem',
-        letterSpacing: '0.05em',
+        fontSize: '0.8rem',
         fontFamily: 'monospace',
+        letterSpacing: '0.03em',
     },
     hero: {
-        padding: '100px 48px 80px',
-        maxWidth: '900px',
+        padding: '80px 0 64px',
+        maxWidth: '680px',
     },
-    heroEyebrow: {
+    heroIntro: {
+        fontSize: 'clamp(1.4rem, 3vw, 2rem)',
+        lineHeight: 1.4,
+        color: '#111',
+        fontFamily: 'monospace',
+        fontWeight: 400,
+        margin: '0 0 20px',
+    },
+    heroStatus: {
         fontSize: '0.8rem',
-        letterSpacing: '0.15em',
+        color: 'rgba(0,0,0,0.35)',
+        fontFamily: 'monospace',
+        letterSpacing: '0.1em',
         textTransform: 'uppercase',
-        color: 'rgba(255,255,255,0.4)',
-        margin: '0 0 24px',
-        fontFamily: 'monospace',
-    },
-    heroHeading: {
-        fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-        fontWeight: 700,
-        lineHeight: 1.15,
-        margin: '0 0 24px',
-        color: '#fff',
-        fontFamily: 'monospace',
-    },
-    heroName: {
-        borderBottom: '3px solid rgba(255,255,255,0.6)',
-        paddingBottom: '2px',
-    },
-    heroSub: {
-        fontSize: '1rem',
-        color: 'rgba(255,255,255,0.55)',
-        lineHeight: 1.8,
         margin: 0,
-        fontFamily: 'monospace',
     },
     section: {
-        padding: '64px 48px',
-        borderTop: '1px solid rgba(255,255,255,0.07)',
+        padding: '48px 0',
+        borderTop: '1px solid rgba(0,0,0,0.07)',
+        width: '100%',
     },
-    sectionLast: {
-        padding: '64px 48px 80px',
-        borderTop: '1px solid rgba(255,255,255,0.07)',
+    labelRow: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '32px',
     },
-    sectionLabel: {
-        fontSize: '0.72rem',
+    label: {
+        fontSize: '0.7rem',
         textTransform: 'uppercase',
-        letterSpacing: '0.25em',
-        color: 'rgba(255,255,255,0.3)',
-        margin: '0 0 40px',
-        fontWeight: 400,
+        letterSpacing: '0.2em',
+        color: 'rgba(0,0,0,0.25)',
+        margin: 0,
         fontFamily: 'monospace',
     },
-    grid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-        gap: '12px',
+    resumeBtn: {
+        fontSize: '0.75rem',
+        fontFamily: 'monospace',
+        color: '#111',
+        textDecoration: 'none',
+        border: '1px solid rgba(0,0,0,0.15)',
+        borderRadius: '6px',
+        padding: '6px 14px',
+        letterSpacing: '0.03em',
+    },
+    stackWrap: {
+        position: 'relative',
+        width: '100%',
+        maxWidth: '560px',
+        height: '160px',
+        cursor: 'pointer',
     },
     card: {
-        background: 'rgba(255,255,255,0.05)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        border: '1px solid rgba(255,255,255,0.1)',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        background: '#fff',
+        border: '1px solid rgba(0,0,0,0.08)',
         borderRadius: '10px',
-        padding: '28px',
+        padding: '24px 28px',
+        boxSizing: 'border-box',
+        transition: 'transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease',
         display: 'flex',
         flexDirection: 'column',
-        gap: '10px',
-        cursor: 'pointer',
-        boxSizing: 'border-box',
-        transition: 'background 0.2s, border-color 0.2s',
+        gap: '6px',
+        boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
     },
-    cardId: {
-        fontSize: '0.7rem',
-        color: 'rgba(255,255,255,0.3)',
-        letterSpacing: '0.1em',
+    cardTop: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'baseline',
+    },
+    cardRole: {
+        fontSize: '1rem',
+        fontWeight: 700,
+        color: '#111',
         fontFamily: 'monospace',
     },
-    cardTitle: {
-        fontSize: '1.05rem',
-        fontWeight: 700,
-        margin: 0,
-        color: '#fff',
+    cardPeriod: {
+        fontSize: '0.72rem',
+        color: 'rgba(0,0,0,0.35)',
+        fontFamily: 'monospace',
+    },
+    cardCompany: {
+        fontSize: '0.8rem',
+        color: 'rgba(0,0,0,0.5)',
         fontFamily: 'monospace',
     },
     cardDesc: {
-        fontSize: '0.85rem',
-        color: 'rgba(255,255,255,0.5)',
+        fontSize: '0.78rem',
+        color: 'rgba(0,0,0,0.4)',
+        fontFamily: 'monospace',
         margin: 0,
-        lineHeight: 1.6,
-        flex: 1,
+        lineHeight: 1.5,
+    },
+    cardHint: {
+        fontSize: '0.65rem',
+        color: 'rgba(0,0,0,0.2)',
         fontFamily: 'monospace',
+        marginTop: '4px',
+        letterSpacing: '0.05em',
     },
-    tagRow: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '6px',
-        marginTop: '8px',
+    grid: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+        gap: '1px',
+        background: 'rgba(0,0,0,0.07)',
+        border: '1px solid rgba(0,0,0,0.07)',
+        borderRadius: '10px',
+        overflow: 'hidden',
     },
-    tag: {
-        fontSize: '0.68rem',
-        letterSpacing: '0.08em',
-        background: 'rgba(255,255,255,0.08)',
-        border: '1px solid rgba(255,255,255,0.12)',
-        color: 'rgba(255,255,255,0.6)',
-        padding: '3px 10px',
-        borderRadius: '4px',
-        fontFamily: 'monospace',
-    },
-    skillList: {
-        maxWidth: '640px',
-    },
-    skillItem: {
+    projectCard: {
+        background: '#f9f9f7',
+        padding: '24px',
         display: 'flex',
         flexDirection: 'column',
-    },
-    skillToggle: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: 'transparent',
-        border: 'none',
-        padding: '20px 0',
-        cursor: 'pointer',
-        fontFamily: 'monospace',
-        fontSize: '1rem',
-        color: 'rgba(255,255,255,0.8)',
-        width: '100%',
-        textAlign: 'left',
-    },
-    skillArrow: {
-        fontSize: '0.6rem',
-        color: 'rgba(255,255,255,0.3)',
-    },
-    skillTags: {
-        display: 'flex',
-        flexWrap: 'wrap',
         gap: '8px',
-        paddingBottom: '20px',
-    },
-    divider: {
-        height: '1px',
-        background: 'rgba(255,255,255,0.07)',
-    },
-    glassBox: {
-        background: 'rgba(255,255,255,0.05)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        border: '1px solid rgba(255,255,255,0.1)',
-        borderRadius: '10px',
-        padding: '32px',
-        maxWidth: '640px',
+        cursor: 'pointer',
         boxSizing: 'border-box',
     },
-    aboutText: {
-        fontSize: '1rem',
-        color: 'rgba(255,255,255,0.6)',
-        lineHeight: 1.8,
-        margin: 0,
+    projectTop: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'baseline',
+    },
+    projectTitle: {
+        fontSize: '0.95rem',
+        fontWeight: 700,
+        color: '#111',
         fontFamily: 'monospace',
     },
-    contactLine: {
-        fontSize: '0.9rem',
-        color: 'rgba(255,255,255,0.5)',
-        margin: '0 0 20px',
+    projectYear: {
+        fontSize: '0.7rem',
+        color: 'rgba(0,0,0,0.25)',
+        fontFamily: 'monospace',
+    },
+    projectTags: {
+        fontSize: '0.72rem',
+        color: 'rgba(0,0,0,0.4)',
         fontFamily: 'monospace',
     },
     email: {
-        display: 'block',
-        fontSize: 'clamp(1rem, 2.5vw, 1.6rem)',
+        fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
         fontWeight: 700,
-        color: '#fff',
+        color: '#111',
         textDecoration: 'none',
-        borderBottom: '2px solid rgba(255,255,255,0.3)',
-        width: 'fit-content',
-        marginBottom: '28px',
-        paddingBottom: '4px',
         fontFamily: 'monospace',
-    },
-    contactLinks: {
-        display: 'flex',
-        gap: '24px',
+        borderBottom: '1px solid rgba(0,0,0,0.2)',
+        paddingBottom: '4px',
+        display: 'inline-block',
     },
     footer: {
-        borderTop: '1px solid rgba(255,255,255,0.07)',
-        padding: '24px 48px',
+        borderTop: '1px solid rgba(0,0,0,0.07)',
+        padding: '20px 0',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         boxSizing: 'border-box',
+        width: '100%',
+    },
+    footerCopy: {
+        fontSize: '0.75rem',
+        color: 'rgba(0,0,0,0.25)',
+        fontFamily: 'monospace',
+    },
+    footerLinks: {
+        display: 'flex',
+        gap: '20px',
     },
 };
 

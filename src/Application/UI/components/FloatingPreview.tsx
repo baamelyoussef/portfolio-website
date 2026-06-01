@@ -11,7 +11,8 @@ const MAX_W = 700;
 
 const FloatingPreview: React.FC<Props> = ({ onEnter, videoSrc }) => {
     const [visible, setVisible] = useState(true);
-    const [pos, setPos] = useState({ x: 24, y: -1 });
+    const [videoReady, setVideoReady] = useState(false);
+    const [pos, setPos] = useState<{ x: number; y: number } | null>(null); // null = use default CSS bottom-left
     const [width, setWidth] = useState(420);
     const [dragging, setDragging] = useState(false);
     const [resizing, setResizing] = useState(false);
@@ -19,18 +20,18 @@ const FloatingPreview: React.FC<Props> = ({ onEnter, videoSrc }) => {
     const resizeStart = useRef({ x: 0, w: 0 });
     const ref = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        if (ref.current) {
-            const h = ref.current.offsetHeight;
-            setPos({ x: 24, y: window.innerHeight - h - 24 });
-        }
-    }, []);
-
     // drag
     const onDragMouseDown = (e: React.MouseEvent) => {
         e.preventDefault();
+        // on first drag, convert bottom-left CSS position to top-left coords
+        if (!pos && ref.current) {
+            const rect = ref.current.getBoundingClientRect();
+            setPos({ x: rect.left, y: rect.top });
+            dragOffset.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+        } else if (pos) {
+            dragOffset.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
+        }
         setDragging(true);
-        dragOffset.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
     };
 
     useEffect(() => {
@@ -65,7 +66,8 @@ const FloatingPreview: React.FC<Props> = ({ onEnter, videoSrc }) => {
         const onMove = (e: MouseEvent) => {
             const delta = e.clientX - resizeStart.current.x;
             const newW = Math.min(MAX_W, Math.max(MIN_W, resizeStart.current.w + delta));
-            const clamped = Math.min(newW, window.innerWidth - pos.x);
+            const leftEdge = pos ? pos.x : 24;
+            const clamped = Math.min(newW, window.innerWidth - leftEdge);
             setWidth(clamped);
         };
         const onUp = () => setResizing(false);
@@ -75,7 +77,7 @@ const FloatingPreview: React.FC<Props> = ({ onEnter, videoSrc }) => {
             window.removeEventListener('mousemove', onMove);
             window.removeEventListener('mouseup', onUp);
         };
-    }, [resizing, pos.x]);
+    }, [resizing, pos]);
 
     if (!visible) return null;
 
@@ -86,9 +88,9 @@ const FloatingPreview: React.FC<Props> = ({ onEnter, videoSrc }) => {
                 position: 'fixed',
                 zIndex: 10000,
                 width,
-                left: pos.x,
-                top: pos.y >= 0 ? pos.y : 'auto',
-                bottom: pos.y < 0 ? 24 : 'auto',
+                left: pos ? pos.x : 24,
+                top: pos ? pos.y : 'auto',
+                bottom: pos ? 'auto' : 24,
                 background: 'rgba(15, 15, 25, 0.75)',
                 backdropFilter: 'blur(24px)',
                 WebkitBackdropFilter: 'blur(24px)',
@@ -102,6 +104,18 @@ const FloatingPreview: React.FC<Props> = ({ onEnter, videoSrc }) => {
                 flexDirection: 'column',
             }}
         >
+            {/* blurred video layer — sits behind header & footer */}
+            {videoSrc && videoReady && (
+                <video
+                    src={videoSrc}
+                    style={s.blurredBg}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                />
+            )}
+
             {/* header — drag handle */}
             <div style={s.header} onMouseDown={onDragMouseDown}>
                 <span style={s.headerLabel}>◆ Immersive Preview</span>
@@ -116,19 +130,21 @@ const FloatingPreview: React.FC<Props> = ({ onEnter, videoSrc }) => {
 
             {/* video */}
             <div style={s.videoWrap}>
-                {videoSrc ? (
+                {!videoReady && (
+                    <div style={s.videoPlaceholder}>
+                        <VideoLoader />
+                    </div>
+                )}
+                {videoSrc && (
                     <video
                         src={videoSrc}
-                        style={s.video}
+                        style={{ ...s.video, opacity: videoReady ? 1 : 0 }}
                         autoPlay
                         muted
                         loop
                         playsInline
+                        onCanPlay={() => setVideoReady(true)}
                     />
-                ) : (
-                    <div style={s.videoPlaceholder}>
-                        <span style={s.placeholderText}>Video coming soon</span>
-                    </div>
                 )}
             </div>
 
@@ -140,27 +156,84 @@ const FloatingPreview: React.FC<Props> = ({ onEnter, videoSrc }) => {
                 </button>
             </div>
 
-            {/* resize grip */}
+            {/* resize — invisible hit area */}
             <div
                 style={s.resizeHandle}
                 onMouseDown={onResizeMouseDown}
-                title="Resize"
             />
         </div>,
         document.body
     );
 };
 
+const VideoLoader: React.FC = () => {
+    const [dots, setDots] = useState('');
+    useEffect(() => {
+        const id = setInterval(() => setDots(d => d.length >= 3 ? '' : d + '.'), 400);
+        return () => clearInterval(id);
+    }, []);
+    return (
+        <div style={loader.wrap}>
+            <span style={loader.line}>[ LOADING PREVIEW{dots.padEnd(3, ' ')} ]</span>
+            <div style={loader.bar}>
+                <div style={loader.barFill} />
+            </div>
+        </div>
+    );
+};
+
+const loader: { [key: string]: React.CSSProperties } = {
+    wrap: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '14px',
+    },
+    line: {
+        fontFamily: 'monospace',
+        fontSize: '0.72rem',
+        letterSpacing: '0.15em',
+        color: 'rgba(255,255,255,0.45)',
+    },
+    bar: {
+        width: '120px',
+        height: '2px',
+        background: 'rgba(255,255,255,0.1)',
+        borderRadius: '2px',
+        overflow: 'hidden',
+    },
+    barFill: {
+        height: '100%',
+        width: '40%',
+        background: 'rgba(255,255,255,0.5)',
+        borderRadius: '2px',
+        animation: 'scan 1.2s ease-in-out infinite alternate',
+    },
+};
+
 const s: { [key: string]: React.CSSProperties } = {
+    blurredBg: {
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        filter: 'blur(32px)',
+        transform: 'scale(1.1)', // prevents blur edge artifacts
+        zIndex: 0,
+        opacity: 0.5,
+    },
     header: {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px 14px',
         cursor: 'grab',
-        borderBottom: '1px solid rgba(255,255,255,0.15)',
-        background: 'rgba(0,0,0,0.5)',
+        borderBottom: '1px solid rgba(255,255,255,0.1)',
+        background: 'transparent',
         flexShrink: 0,
+        position: 'relative',
+        zIndex: 2,
     },
     headerLabel: {
         fontFamily: 'monospace',
@@ -186,13 +259,18 @@ const s: { [key: string]: React.CSSProperties } = {
         flexShrink: 0,
     },
     videoWrap: {
+        position: 'relative',
         width: '100%',
-        aspectRatio: '16/9',
+        paddingBottom: '56.25%', // 16:9 — constrains height regardless of video natural size
         overflow: 'hidden',
         backgroundColor: 'rgba(0,0,0,0.5)',
         flexShrink: 0,
+        zIndex: 1,
     },
     video: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
         width: '100%',
         height: '100%',
         objectFit: 'cover',
@@ -217,9 +295,11 @@ const s: { [key: string]: React.CSSProperties } = {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px 14px',
-        borderTop: '1px solid rgba(255,255,255,0.15)',
-        background: 'rgba(0,0,0,0.5)',
+        borderTop: '1px solid rgba(255,255,255,0.1)',
+        background: 'transparent',
         flexShrink: 0,
+        position: 'relative',
+        zIndex: 2,
     },
     footerLabel: {
         fontFamily: 'monospace',
@@ -243,16 +323,11 @@ const s: { [key: string]: React.CSSProperties } = {
     },
     resizeHandle: {
         position: 'absolute',
-        bottom: 4,
-        right: 4,
-        width: '16px',
-        height: '16px',
+        bottom: 0,
+        right: 0,
+        width: '24px',
+        height: '24px',
         cursor: 'ew-resize',
-        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px)',
-        backgroundSize: '4px 4px',
-        backgroundPosition: '1px 1px',
-        backgroundRepeat: 'repeat',
-        opacity: 0.7,
     },
 };
 

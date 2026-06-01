@@ -115,6 +115,11 @@ br {
     }
 }
 
+@keyframes scan {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(350%); }
+}
+
 .bios-start-button {
     background-color: #000;
     border: 4px solid #fff;
