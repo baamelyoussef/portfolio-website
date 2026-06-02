@@ -1,0 +1,47 @@
+# Youssef Baamel
+
+> Full-Stack Engineer with 5+ years shipping production web and mobile apps.
+
+## About
+
+Youssef Baamel is a Full-Stack Engineer based in Rabat, Morocco. Currently working at BTECHNOLOGIE, the exclusive partner of Bouygues Telecom and Accenture, building client-facing web and mobile applications with React, Next.js, TypeScript, and AWS.
+
+Stack: React, Next.js, TypeScript, JavaScript, Node.js, Python, FastAPI, Django, PostgreSQL, REST APIs, Docker, AWS, React Native, Directus CMS.
+
+Open to full-time engineering roles in Europe.
+
+## Experience
+
+- **Front End Engineer** at BTECHNOLOGIE · Bouygues Telecom x Accenture (Jan 2025 – Present)
+  Building client-facing web & mobile apps with React, Next.js, TypeScript. Directus CMS, AWS.
+
+- **Full Stack Engineer** at 1450 Factory · Blink Pharma (Sep 2023 – Sep 2024)
+  Built blinkpharma.ma — original Python backend, Next.js fullstack migration.
+
+- **Full Stack Engineer** at MEDIOT (Jun 2023 – Sep 2023)
+  Medical-sector apps with React.js and Node.js in Agile environment.
+
+- **Full Stack Engineer** at Algo Consulting Group · ONCF (Jan 2022 – Mar 2023)
+  Supratours and ONCF Voyages train-ticket platforms, RTL Arabic localization.
+
+- **Full Stack Developer** — Freelance (Feb 2020 – Dec 2021)
+  Python (Django), Node.js, React.js, Vue.js for various clients.
+
+## Projects
+
+- **Heald — Put Yourself First**: iOS Health & Fitness app (React Native, 2025). Available on App Store: https://apps.apple.com/us/app/heald-put-yourself-first/id6756617487
+
+- **Blink Premium**: Medical iOS app for pharmaceutical professionals (React Native, 2024). Available on App Store: https://apps.apple.com/ma/app/blink-premium/id1482286159
+
+- **Debrief**: Open-source AI meeting summarizer. Transcribes audio with Whisper, generates structured summaries, action items, and decisions using LLMs. Built with FastAPI, React, PostgreSQL, Celery, Redis.
+
+## Education
+
+Bachelor's degree, Computer Science — ENSET Mohammedia (2022)
+
+## Contact
+
+- Email: hi@youssefbaamel.com
+- LinkedIn: https://linkedin.com/in/youssefbaamel
+- GitHub: https://github.com/baamelyoussef
+- Website: https://youssefbaamel.com
