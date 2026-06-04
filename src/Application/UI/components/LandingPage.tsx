@@ -58,11 +58,10 @@ const projects = [
     },
     {
         title: 'Debrief',
-        tags: 'FastAPI · Whisper · GPT-4o · React · Stripe',
+        tags: 'React · Node.js · Whisper · GPT-4o mini · PostgreSQL · Redis',
         year: '2026',
-        bg: null,
-        link: null,
-        wip: true,
+        bg: '/images/debrief-preview.png',
+        link: 'https://usedbrief.vercel.app/',
     },
 ];
 
