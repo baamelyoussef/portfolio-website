@@ -64,7 +64,7 @@ const projects = [
         year: '2026',
         bg: '/images/debrief-preview.png',
         link: 'https://usedbrief.vercel.app/',
-        github: null,
+        github: 'https://github.com/baamelyoussef/debrief',
     },
 ];
 
