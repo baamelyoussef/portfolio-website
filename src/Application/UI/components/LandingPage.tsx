@@ -48,6 +48,7 @@ const projects = [
         year: '2025',
         bg: '/images/heald-preview.png',
         link: 'https://apps.apple.com/us/app/heald-put-yourself-first/id6756617487',
+        github: null,
     },
     {
         title: 'Blink Premium',
@@ -55,6 +56,7 @@ const projects = [
         year: '2024',
         bg: '/images/blink-premium-preview.png',
         link: 'https://apps.apple.com/ma/app/blink-premium/id1482286159',
+        github: null,
     },
     {
         title: 'Debrief',
@@ -62,6 +64,7 @@ const projects = [
         year: '2026',
         bg: '/images/debrief-preview.png',
         link: 'https://usedbrief.vercel.app/',
+        github: null,
     },
 ];
 
@@ -77,6 +80,18 @@ const useIsMobile = () => {
 
 const LandingPage: React.FC<Props> = ({ onEnter }) => {
     const isMobile = useIsMobile();
+    const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const openModal = (p: typeof projects[0]) => {
+        setSelectedProject(p);
+        setTimeout(() => setModalVisible(true), 10);
+    };
+
+    const closeModal = () => {
+        setModalVisible(false);
+        setTimeout(() => setSelectedProject(null), 300);
+    };
 
     const scrollTo = (id: string) => (e: React.MouseEvent) => {
         e.preventDefault();
@@ -162,31 +177,23 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
                         <section id="work" style={s.section}>
                             <div style={s.labelRow}><p style={s.label}>Projects</p></div>
                             <div style={{ ...s.grid, gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fill, minmax(280px, 1fr))' }}>
-                                {projects.map((p) => {
-                                    const card = (
-                                        <div key={p.title} style={s.projectCard}>
-                                            {p.bg && (
-                                                <>
-                                                    <img src={p.bg} alt={p.title} style={s.projectImg} />
-                                                    <div style={s.projectOverlay} />
-                                                </>
-                                            )}
-                                            <div style={{ position: p.bg ? 'absolute' : 'relative', bottom: p.bg ? 0 : undefined, left: p.bg ? 0 : undefined, right: p.bg ? 0 : undefined, padding: '20px', zIndex: 1 }}>
-                                                <div style={s.projectTop}>
-                                                    <span style={{ ...s.projectTitle, color: p.bg ? '#fff' : '#111' }}>{p.title}</span>
-                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                        {(p as any).wip && <span style={s.wipBadge}>WIP</span>}
-                                                        <span style={{ ...s.projectYear, color: p.bg ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.25)' }}>{p.year}</span>
-                                                    </div>
-                                                </div>
-                                                <span style={{ ...s.projectTags, color: p.bg ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.4)' }}>{p.tags}</span>
+                                {projects.map((p) => (
+                                    <div key={p.title} style={s.projectCard} onClick={() => openModal(p)}>
+                                        {p.bg && (
+                                            <>
+                                                <img src={p.bg} alt={p.title} style={s.projectImg} />
+                                                <div style={s.projectOverlay} />
+                                            </>
+                                        )}
+                                        <div style={{ position: p.bg ? 'absolute' : 'relative', bottom: p.bg ? 0 : undefined, left: p.bg ? 0 : undefined, right: p.bg ? 0 : undefined, padding: '20px', zIndex: 1 }}>
+                                            <div style={s.projectTop}>
+                                                <span style={{ ...s.projectTitle, color: p.bg ? '#fff' : '#111' }}>{p.title}</span>
+                                                <span style={{ ...s.projectYear, color: p.bg ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.25)' }}>{p.year}</span>
                                             </div>
+                                            <span style={{ ...s.projectTags, color: p.bg ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.4)' }}>{p.tags}</span>
                                         </div>
-                                    );
-                                    return p.link
-                                        ? <a key={p.title} href={p.link} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>{card}</a>
-                                        : card;
-                                })}
+                                    </div>
+                                ))}
                             </div>
                         </section>
 
@@ -212,6 +219,45 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
             </div>
 
             {!isMobile && <FloatingPreview onEnter={onEnter} videoSrc="/videos/preview-ix.mp4" />}
+
+            {selectedProject && (
+                <div style={{ ...s.modalBackdrop, opacity: modalVisible ? 1 : 0 }} onClick={closeModal}>
+                    <div
+                        style={{
+                            ...s.modalPanel,
+                            transform: modalVisible ? 'translateY(0)' : 'translateY(32px)',
+                            opacity: modalVisible ? 1 : 0,
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button style={s.modalClose} onClick={closeModal}>✕</button>
+                        {selectedProject.bg && (
+                            <div style={s.modalImgWrap}>
+                                <img src={selectedProject.bg} alt={selectedProject.title} style={s.modalImg} />
+                            </div>
+                        )}
+                        <div style={s.modalBody}>
+                            <div style={s.modalTitleRow}>
+                                <span style={s.modalTitle}>{selectedProject.title}</span>
+                                <span style={s.modalYear}>{selectedProject.year}</span>
+                            </div>
+                            <p style={s.modalTags}>{selectedProject.tags}</p>
+                            <div style={s.modalActions}>
+                                {selectedProject.link && (
+                                    <a href={selectedProject.link} target="_blank" rel="noreferrer" style={s.modalBtnPrimary}>
+                                        Visit Project ↗
+                                    </a>
+                                )}
+                                {selectedProject.github && (
+                                    <a href={selectedProject.github} target="_blank" rel="noreferrer" style={s.modalBtnSecondary}>
+                                        GitHub ↗
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 };
@@ -501,6 +547,111 @@ const s: { [key: string]: React.CSSProperties } = {
     footerLinks: {
         display: 'flex',
         gap: '20px',
+    },
+    modalBackdrop: {
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(0,0,0,0.5)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        zIndex: 99999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '24px',
+        boxSizing: 'border-box',
+        transition: 'opacity 0.3s ease',
+    },
+    modalPanel: {
+        background: '#fff',
+        borderRadius: '14px',
+        width: '100%',
+        maxWidth: '520px',
+        overflow: 'hidden',
+        boxShadow: '0 24px 64px rgba(0,0,0,0.2)',
+        transition: 'transform 0.3s ease, opacity 0.3s ease',
+        position: 'relative',
+    },
+    modalClose: {
+        position: 'absolute',
+        top: '14px',
+        right: '14px',
+        background: 'rgba(0,0,0,0.06)',
+        border: 'none',
+        borderRadius: '50%',
+        width: '30px',
+        height: '30px',
+        cursor: 'pointer',
+        fontSize: '0.7rem',
+        color: '#111',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 2,
+        fontFamily: 'monospace',
+    },
+    modalImgWrap: {
+        width: '100%',
+        maxHeight: '260px',
+        overflow: 'hidden',
+    },
+    modalImg: {
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        display: 'block',
+    },
+    modalBody: {
+        padding: '24px',
+    },
+    modalTitleRow: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'baseline',
+        marginBottom: '6px',
+    },
+    modalTitle: {
+        fontSize: '1rem',
+        fontWeight: 700,
+        fontFamily: 'monospace',
+        color: '#111',
+    },
+    modalYear: {
+        fontSize: '0.7rem',
+        color: 'rgba(0,0,0,0.25)',
+        fontFamily: 'monospace',
+    },
+    modalTags: {
+        fontSize: '0.72rem',
+        color: 'rgba(0,0,0,0.4)',
+        fontFamily: 'monospace',
+        margin: '0 0 20px',
+        lineHeight: 1.6,
+    },
+    modalActions: {
+        display: 'flex',
+        gap: '10px',
+    },
+    modalBtnPrimary: {
+        background: '#111',
+        color: '#fff',
+        textDecoration: 'none',
+        fontFamily: 'monospace',
+        fontSize: '0.8rem',
+        padding: '10px 20px',
+        borderRadius: '8px',
+        letterSpacing: '0.03em',
+    },
+    modalBtnSecondary: {
+        background: 'transparent',
+        color: '#111',
+        textDecoration: 'none',
+        fontFamily: 'monospace',
+        fontSize: '0.8rem',
+        padding: '10px 20px',
+        borderRadius: '8px',
+        border: '1px solid rgba(0,0,0,0.15)',
+        letterSpacing: '0.03em',
     },
 };
 
