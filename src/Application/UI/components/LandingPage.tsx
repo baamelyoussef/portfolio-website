@@ -66,6 +66,14 @@ const projects = [
         link: 'https://usedbrief.vercel.app/',
         github: 'https://github.com/baamelyoussef/debrief',
     },
+    {
+        title: 'Syncboard',
+        tags: 'React · Python · FastAPI · WebSockets · CRDT · Canvas · roughjs',
+        year: '2026',
+        bg: '/images/syncboard-preview.png',
+        link: 'https://syncboard-teal.vercel.app/',
+        github: 'https://github.com/baamelyoussef/syncboard',
+    },
 ];
 
 const useIsMobile = () => {
