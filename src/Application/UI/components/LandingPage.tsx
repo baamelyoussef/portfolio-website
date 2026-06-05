@@ -67,6 +67,14 @@ const projects = [
         github: 'https://github.com/baamelyoussef/debrief',
     },
     {
+        title: 'Outmailer',
+        tags: 'Next.js · TypeScript · Email Validation · SaaS',
+        year: '2025',
+        bg: '/images/outmailer-preview.png',
+        link: 'https://outmailer.vercel.app/',
+        github: 'https://github.com/baamelyoussef/Outmailer',
+    },
+    {
         title: 'Syncboard',
         tags: 'React · Python · FastAPI · WebSockets · CRDT · Canvas · roughjs',
         year: '2026',
