@@ -151,9 +151,7 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
                         {/* HERO */}
                         <section style={{ ...s.hero, padding: isMobile ? '40px 0 32px' : '80px 0 64px' }}>
                             <p style={s.heroIntro}>
-                                Youssef is a software engineer who builds performant,
-                                visually compelling things for the web — from polished UIs
-                                to immersive 3D experiences.
+                                Youssef is a full-stack engineer with 5+ years building across React, Node.js, Python and React Native. From SaaS products to real-time systems and production iOS apps.
                             </p>
                             <p style={s.heroStatus}>Open to full-time roles</p>
                         </section>
