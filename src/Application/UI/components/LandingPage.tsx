@@ -69,7 +69,7 @@ const projects = [
     {
         title: 'Outmailer',
         tags: 'Next.js · TypeScript · Email Validation · SaaS',
-        year: '2025',
+        year: '2022',
         bg: '/images/outmailer-preview.png',
         link: 'https://outmailer.vercel.app/',
         github: 'https://github.com/baamelyoussef/Outmailer',
