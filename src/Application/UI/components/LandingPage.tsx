@@ -226,7 +226,7 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
             </div>
 
             {!isMobile && <FloatingPreview onEnter={onEnter} videoSrc="/videos/preview-ix.mp4" />}
-            {!isMobile && <IntroVideo />}
+            <IntroVideo isMobile={isMobile} />
 
             {selectedProject && (
                 <div style={{ ...s.modalBackdrop, opacity: modalVisible ? 1 : 0 }} onClick={closeModal}>
