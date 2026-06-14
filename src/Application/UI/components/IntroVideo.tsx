@@ -13,7 +13,7 @@ const IntroVideo: React.FC<Props> = ({ videoSrc }) => {
     const [videoReady, setVideoReady] = useState(false);
     const [muted, setMuted] = useState(false);
     const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
-    const [width, setWidth] = useState(380);
+    const [width, setWidth] = useState(420);
     const [dragging, setDragging] = useState(false);
     const [resizing, setResizing] = useState(false);
     const dragOffset = useRef({ x: 0, y: 0 });
@@ -148,6 +148,10 @@ const IntroVideo: React.FC<Props> = ({ videoSrc }) => {
                 )}
             </div>
 
+            <div style={s.footer}>
+                <span style={s.footerLabel}>Youssef Baamel</span>
+            </div>
+
             <div style={s.resizeHandle} onMouseDown={onResizeMouseDown} />
         </div>,
         document.body
@@ -236,6 +240,23 @@ const s: { [key: string]: React.CSSProperties } = {
         fontSize: '0.72rem',
         letterSpacing: '0.12em',
         color: 'rgba(255,255,255,0.3)',
+        textTransform: 'uppercase',
+    },
+    footer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '10px 14px',
+        borderTop: '1px solid rgba(255,255,255,0.1)',
+        flexShrink: 0,
+        position: 'relative',
+        zIndex: 2,
+    },
+    footerLabel: {
+        fontFamily: 'monospace',
+        fontSize: '0.7rem',
+        letterSpacing: '0.1em',
+        color: 'rgba(255,255,255,0.7)',
         textTransform: 'uppercase',
     },
     resizeHandle: {
