@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FloatingPreview from './FloatingPreview';
+import IntroVideo from './IntroVideo';
 
 type Props = { onEnter: () => void };
 
@@ -233,6 +234,7 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
             </div>
 
             {!isMobile && <FloatingPreview onEnter={onEnter} videoSrc="/videos/preview-ix.mp4" />}
+            {!isMobile && <IntroVideo />}
 
             {selectedProject && (
                 <div style={{ ...s.modalBackdrop, opacity: modalVisible ? 1 : 0 }} onClick={closeModal}>
