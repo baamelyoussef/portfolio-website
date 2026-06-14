@@ -149,12 +149,8 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
 
                     <div style={{ ...s.inner, padding: isMobile ? '0 16px' : '0 32px' }}>
 
-                        {/* HERO */}
-                        <section style={{ ...s.hero, padding: isMobile ? '40px 0 32px' : '80px 0 64px' }}>
-                        </section>
-
                         {/* EXPERIENCE */}
-                        <section id="experience" style={s.section}>
+                        <section id="experience" style={{ ...s.section, borderTop: 'none' }}>
                             <div style={s.labelRow}>
                                 <p style={s.label}>Experience</p>
                                 <a href="/resume.pdf" download style={s.resumeBtn}>Download Resume ↓</a>
