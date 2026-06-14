@@ -261,7 +261,7 @@ const s: { [key: string]: React.CSSProperties } = {
     videoWrap: {
         position: 'relative',
         width: '100%',
-        paddingBottom: '56.25%', // 16:9 — constrains height regardless of video natural size
+        height: '220px',
         overflow: 'hidden',
         backgroundColor: 'rgba(0,0,0,0.5)',
         flexShrink: 0,
@@ -277,12 +277,11 @@ const s: { [key: string]: React.CSSProperties } = {
         display: 'block',
     },
     videoPlaceholder: {
-        width: '100%',
-        height: '100%',
+        position: 'absolute',
+        inset: 0,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '168px',
     },
     placeholderText: {
         fontFamily: 'monospace',

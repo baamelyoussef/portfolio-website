@@ -205,7 +205,7 @@ const s: { [key: string]: React.CSSProperties } = {
     videoWrap: {
         position: 'relative',
         width: '100%',
-        paddingBottom: '56.25%',
+        height: '220px',
         overflow: 'hidden',
         backgroundColor: 'rgba(0,0,0,0.6)',
         flexShrink: 0,
