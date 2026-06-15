@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import FloatingPreview from './FloatingPreview';
 import IntroVideo from './IntroVideo';
 
+const INTRO_VIDEO_SRC: string | undefined = undefined;
+
 type Props = { onEnter: () => void };
 
 const experience = [
@@ -128,10 +130,10 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
                                     <button className="spin-btn" onClick={onEnter}>
                                         <span className="spin-btn-inner">✦ Try Immersive</span>
                                     </button>
-                                    <div style={{ ...s.navLinks, gap: '16px' }}>
-                                        <a href="#experience" style={s.navLink} onClick={scrollTo('experience')}>Experience</a>
-                                        <a href="#work" style={s.navLink} onClick={scrollTo('work')}>Projects</a>
-                                        <a href="#contact" style={s.navLink} onClick={scrollTo('contact')}>Contact</a>
+                                    <div style={{ ...s.navLinks, gap: '12px' }}>
+                                        <a href="#experience" style={{ ...s.navLink, fontSize: '0.62rem' }} onClick={scrollTo('experience')}>Experience</a>
+                                        <a href="#work" style={{ ...s.navLink, fontSize: '0.62rem' }} onClick={scrollTo('work')}>Projects</a>
+                                        <a href="#contact" style={{ ...s.navLink, fontSize: '0.62rem' }} onClick={scrollTo('contact')}>Contact</a>
                                     </div>
                                 </>
                             ) : (
@@ -226,7 +228,7 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
             </div>
 
             {!isMobile && <FloatingPreview onEnter={onEnter} videoSrc="/videos/preview-ix.mp4" />}
-            <IntroVideo isMobile={isMobile} />
+            {INTRO_VIDEO_SRC && <IntroVideo isMobile={isMobile} videoSrc={INTRO_VIDEO_SRC} />}
 
             {selectedProject && (
                 <div style={{ ...s.modalBackdrop, opacity: modalVisible ? 1 : 0 }} onClick={closeModal}>

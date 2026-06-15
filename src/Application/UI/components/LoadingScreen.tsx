@@ -147,7 +147,6 @@ const LoadingScreen: React.FC<LoadingProps> = () => {
                         className="loading-screen-header"
                     >
                         <p>Inspired by henryheffernan.com</p>
-                    
                     </div>
                     <div
                         style={styles.header}
