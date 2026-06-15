@@ -4,4 +4,3 @@ package-lock.json
 *.psd
 
 public/
-!public/resume.pdf
