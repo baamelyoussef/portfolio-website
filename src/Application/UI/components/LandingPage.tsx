@@ -30,7 +30,6 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [showResume, setShowResume] = useState(false);
-  const [immersiveBarOpen, setImmersiveBarOpen] = useState(true);
 
   const t = UI[lang];
   const exp = experience[lang];
@@ -58,7 +57,7 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
   return (
     <>
       <div style={s.root}>
-        <div style={{ ...s.scroll, paddingBottom: isMobile && immersiveBarOpen ? '56px' : 0 }}>
+        <div style={{ ...s.scroll, paddingBottom: isMobile ? '56px' : 0 }}>
 
           {/* NAV */}
           <nav style={s.nav}>
@@ -197,24 +196,11 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
 
       {/* Mobile immersive bar */}
       {isMobile && (
-        immersiveBarOpen ? (
-          <div style={s.immersiveBar}>
-            <button
-              style={s.immersiveBarClose}
-              onClick={() => setImmersiveBarOpen(false)}
-              aria-label="Dismiss"
-            >
-              ←
-            </button>
-            <button style={s.immersiveBarAction} onClick={onEnter}>
-              ✦&nbsp;&nbsp;Try Immersive
-            </button>
-          </div>
-        ) : (
-          <button className="immersive-fab" onClick={onEnter} aria-label="Try Immersive">
-            <span className="immersive-fab-inner">✦</span>
+        <div className="immersive-bar-anim" style={s.immersiveBar}>
+          <button style={s.immersiveBarAction} onClick={onEnter}>
+            ✦&nbsp;&nbsp;Try Immersive
           </button>
-        )
+        </div>
       )}
 
       {showResume && <ResumeView lang={lang} onClose={() => setShowResume(false)} />}
@@ -683,19 +669,6 @@ const s: { [key: string]: React.CSSProperties } = {
     alignItems: 'stretch',
     zIndex: 10000,
     borderTop: '1px solid rgba(255,255,255,0.08)',
-  },
-  immersiveBarClose: {
-    width: '52px',
-    flexShrink: 0,
-    background: 'none',
-    border: 'none',
-    borderRight: '1px solid rgba(255,255,255,0.1)',
-    color: 'rgba(255,255,255,0.45)',
-    fontSize: '1.05rem',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   immersiveBarAction: {
     flex: 1,
