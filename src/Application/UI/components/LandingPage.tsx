@@ -374,7 +374,7 @@ const s: { [key: string]: React.CSSProperties } = {
   expLogoWrap: {
     width: '100%',
     height: '80px',
-    background: '#fafaf8',
+    background: '#fff',
     borderBottom: '1px solid rgba(0,0,0,0.06)',
     display: 'flex',
     alignItems: 'center',

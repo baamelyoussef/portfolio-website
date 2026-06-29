@@ -51,7 +51,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
       role: 'Full-Stack Engineer',
       company: 'MEDIOT',
       period: 'Jun 2023 — Sep 2023',
-      logo: 'https://mediot.tech/wp-content/uploads/2024/05/MEDIOT_LOGO.png',
+      logo: 'https://media.licdn.com/dms/image/v2/C4D0BAQHBDG4j9Ggf-Q/company-logo_200_200/company-logo_200_200/0/1630548813412/mediot_technology_logo?e=1784160000&v=beta&t=1oTBbFAMsfLnPo9XEJ2GKNG3I7Uqk82MGzm0QPbJp6Y',
       bullets: [
         'Delivered full-stack features end to end for medical-sector SaaS applications using React.js and Node.js in Agile sprints, from specification to production',
         'Collaborated with product and design teams to uphold quality and compliance standards in a regulated healthcare environment',
@@ -106,7 +106,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
       role: 'Ingénieur Full-Stack',
       company: 'MEDIOT',
       period: 'Juin 2023 — Sep 2023',
-      logo: 'https://mediot.tech/wp-content/uploads/2024/05/MEDIOT_LOGO.png',
+      logo: 'https://media.licdn.com/dms/image/v2/C4D0BAQHBDG4j9Ggf-Q/company-logo_200_200/company-logo_200_200/0/1630548813412/mediot_technology_logo?e=1784160000&v=beta&t=1oTBbFAMsfLnPo9XEJ2GKNG3I7Uqk82MGzm0QPbJp6Y',
       bullets: [
         "Livraison de fonctionnalités full-stack bout-en-bout pour des applications SaaS dans le secteur médical (React.js, Node.js), en méthodologie Agile, de la spécification à la mise en production",
         'Collaboration étroite avec les équipes produit et design pour maintenir les standards de qualité et de conformité dans un environnement de santé réglementé',
