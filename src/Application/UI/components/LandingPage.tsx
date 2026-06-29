@@ -66,6 +66,11 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
                 <a href="#experience" style={{ ...s.navLink, fontSize: isMobile ? '0.68rem' : undefined }} onClick={scrollTo('experience')}>{t.nav.experience}</a>
                 <a href="#work" style={{ ...s.navLink, fontSize: isMobile ? '0.68rem' : undefined }} onClick={scrollTo('work')}>{t.nav.projects}</a>
                 <a href="#contact" style={{ ...s.navLink, fontSize: isMobile ? '0.68rem' : undefined }} onClick={scrollTo('contact')}>{t.nav.contact}</a>
+                <button style={s.langToggle} onClick={switchLang}>
+                  <span style={{ color: lang === 'en' ? '#111' : 'rgba(0,0,0,0.3)' }}>EN</span>
+                  <span style={{ color: 'rgba(0,0,0,0.2)', fontSize: isMobile ? '0.55rem' : undefined }}>|</span>
+                  <span style={{ color: lang === 'fr' ? '#111' : 'rgba(0,0,0,0.3)' }}>FR</span>
+                </button>
               </div>
             </div>
           </nav>
