@@ -7,10 +7,6 @@ import { Lang, experience, skills, projects, UI } from '../data';
 const INTRO_VIDEO_SRC: string | undefined = undefined;
 
 function detectLang(): Lang {
-  try {
-    const stored = localStorage.getItem('portfolio_lang');
-    if (stored === 'en' || stored === 'fr') return stored as Lang;
-  } catch {}
   const b = (navigator.language ?? '').toLowerCase();
   if (b.startsWith('fr')) return 'fr';
   return 'en';
@@ -41,9 +37,7 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
   const sk = skills[lang];
 
   const switchLang = () => {
-    const next: Lang = lang === 'en' ? 'fr' : 'en';
-    setLang(next);
-    try { localStorage.setItem('portfolio_lang', next); } catch {}
+    setLang(lang === 'en' ? 'fr' : 'en');
   };
 
   const openModal = (p: typeof projects[0]) => {
