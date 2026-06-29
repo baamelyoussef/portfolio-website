@@ -62,35 +62,11 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
           {/* NAV */}
           <nav style={s.nav}>
             <div style={{ ...s.innerFlex, padding: isMobile ? '0 16px' : '0 32px' }}>
-              {isMobile ? (
-                <>
-                  <span style={{ ...s.navName, fontSize: '0.75rem' }}>Youssef Baamel</span>
-                  <div style={{ ...s.navLinks, gap: '14px' }}>
-                    <a href="#experience" style={{ ...s.navLink, fontSize: '0.68rem' }} onClick={scrollTo('experience')}>{t.nav.experience}</a>
-                    <a href="#work" style={{ ...s.navLink, fontSize: '0.68rem' }} onClick={scrollTo('work')}>{t.nav.projects}</a>
-                    <a href="#contact" style={{ ...s.navLink, fontSize: '0.68rem' }} onClick={scrollTo('contact')}>{t.nav.contact}</a>
-                    <button style={s.langToggle} onClick={switchLang}>
-                      <span style={{ color: lang === 'en' ? '#111' : 'rgba(0,0,0,0.3)' }}>EN</span>
-                      <span style={{ color: 'rgba(0,0,0,0.2)', fontSize: '0.55rem' }}>|</span>
-                      <span style={{ color: lang === 'fr' ? '#111' : 'rgba(0,0,0,0.3)' }}>FR</span>
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <span style={s.navName}>Youssef Baamel</span>
-                  <div style={{ ...s.navLinks, gap: '24px' }}>
-                    <a href="#experience" style={s.navLink} onClick={scrollTo('experience')}>{t.nav.experience}</a>
-                    <a href="#work" style={s.navLink} onClick={scrollTo('work')}>{t.nav.projects}</a>
-                    <a href="#contact" style={s.navLink} onClick={scrollTo('contact')}>{t.nav.contact}</a>
-                    <button style={s.langToggle} onClick={switchLang}>
-                      <span style={{ color: lang === 'en' ? '#111' : 'rgba(0,0,0,0.3)' }}>EN</span>
-                      <span style={{ color: 'rgba(0,0,0,0.2)' }}>|</span>
-                      <span style={{ color: lang === 'fr' ? '#111' : 'rgba(0,0,0,0.3)' }}>FR</span>
-                    </button>
-                  </div>
-                </>
-              )}
+              <div style={{ ...s.navLinks, gap: isMobile ? '14px' : '24px' }}>
+                <a href="#experience" style={{ ...s.navLink, fontSize: isMobile ? '0.68rem' : undefined }} onClick={scrollTo('experience')}>{t.nav.experience}</a>
+                <a href="#work" style={{ ...s.navLink, fontSize: isMobile ? '0.68rem' : undefined }} onClick={scrollTo('work')}>{t.nav.projects}</a>
+                <a href="#contact" style={{ ...s.navLink, fontSize: isMobile ? '0.68rem' : undefined }} onClick={scrollTo('contact')}>{t.nav.contact}</a>
+              </div>
             </div>
           </nav>
 
