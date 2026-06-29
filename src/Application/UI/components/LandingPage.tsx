@@ -110,7 +110,15 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
                     {/* Logo header */}
                     <div style={s.expLogoWrap}>
                       {entry.logo ? (
-                        <img src={entry.logo} alt={entry.company} style={s.expLogo} />
+                        <img
+                          src={entry.logo}
+                          alt={entry.company}
+                          style={{
+                            ...s.expLogo,
+                            ...(entry.company.includes('MEDIOT') && { maxWidth: '210px', maxHeight: '72px' }),
+                            ...(entry.company.includes('ONCF') && { maxWidth: '110px' }),
+                          }}
+                        />
                       ) : (
                         <div style={s.expLogoFallback}>
                           <span style={s.expLogoInitial}>F</span>
