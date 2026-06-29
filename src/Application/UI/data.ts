@@ -31,7 +31,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Jan 2025 — Present',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Bouygues_Telecom_%28alt_logo%29.svg/1280px-Bouygues_Telecom_%28alt_logo%29.svg.png',
       bullets: [
-        'Led front-end delivery of web & mobile applications for Bouygues Telecom, serving millions of subscribers across France, using React, Next.js, and TypeScript',
+        'Led front-end delivery of web & mobile applications for Bouygues Telecom — platforms serving 15.8M quarterly visitors (SimilarWeb verified) — using React, Next.js, and TypeScript',
         'Architected a Directus-powered CMS partials system enabling content teams to ship autonomously at scale while preserving engineering standards',
         'Integrated AWS backend services for asset processing and high-traffic delivery in a demanding production environment',
       ],
@@ -53,8 +53,9 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Jun 2023 — Sep 2023',
       logo: 'https://media.licdn.com/dms/image/v2/C4D0BAQHBDG4j9Ggf-Q/company-logo_200_200/company-logo_200_200/0/1630548813412/mediot_technology_logo?e=1784160000&v=beta&t=1oTBbFAMsfLnPo9XEJ2GKNG3I7Uqk82MGzm0QPbJp6Y',
       bullets: [
-        'Delivered full-stack features end to end for medical-sector SaaS applications using React.js and Node.js in Agile sprints, from specification to production',
-        'Collaborated with product and design teams to uphold quality and compliance standards in a regulated healthcare environment',
+        'Built a telemedicine platform that facilitated over 1M medical interventions and 200,000+ tele-expertises with specialists — one of the most impactful projects of my career, particularly during the 2023 Marrakesh earthquake when it helped deliver care to people in disrupted areas',
+        'Integrated AI-native medical devices to support remote diagnostics and patient monitoring',
+        'Delivered full-stack features end to end using React.js and Node.js in Agile sprints, from specification to production',
       ],
     },
     {
@@ -63,9 +64,9 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Jan 2022 — Mar 2023',
       logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDeShVCtZHpRFBYcO32O89EmsabzU6voOFxA&s',
       bullets: [
-        'Enhanced the ONCF Voyages and Supratours national rail-ticket platforms, improving user experience and conversion for millions of travellers',
+        'Consultant on Morocco\'s national railway e-commerce platforms (ONCF Voyages & Supratours), improving user experience and conversion for millions of travellers',
+        'Sub-managed a team of junior engineers and interns, onboarding and guiding them through delivery — the team later took over the mission full-time',
         "Implemented RTL Arabic localization across the full platform, extending accessibility to Morocco's Arabic-speaking majority",
-        'Advised on UX strategy for the merchant portal redesign, translating complex user research into actionable technical decisions',
       ],
     },
     {
@@ -86,7 +87,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Jan 2025 — Présent',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Bouygues_Telecom_%28alt_logo%29.svg/1280px-Bouygues_Telecom_%28alt_logo%29.svg.png',
       bullets: [
-        "Développement et livraison des applications web & mobile pour Bouygues Telecom, au service de millions d'abonnés en France, avec React, Next.js et TypeScript",
+        "Développement et livraison des applications web & mobile pour Bouygues Telecom — plateformes totalisant 15,8M de visiteurs trimestriels (SimilarWeb vérifié) — avec React, Next.js et TypeScript",
         "Conception d'un système de partials piloté par le CMS headless Directus, permettant aux équipes contenu de livrer de façon autonome à l'échelle tout en maintenant les standards d'ingénierie",
         "Intégration des services AWS pour le traitement des assets et la livraison à fort trafic dans un environnement de production exigeant",
       ],
@@ -108,8 +109,9 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Juin 2023 — Sep 2023',
       logo: 'https://media.licdn.com/dms/image/v2/C4D0BAQHBDG4j9Ggf-Q/company-logo_200_200/company-logo_200_200/0/1630548813412/mediot_technology_logo?e=1784160000&v=beta&t=1oTBbFAMsfLnPo9XEJ2GKNG3I7Uqk82MGzm0QPbJp6Y',
       bullets: [
-        "Livraison de fonctionnalités full-stack bout-en-bout pour des applications SaaS dans le secteur médical (React.js, Node.js), en méthodologie Agile, de la spécification à la mise en production",
-        'Collaboration étroite avec les équipes produit et design pour maintenir les standards de qualité et de conformité dans un environnement de santé réglementé',
+        "Développement d'une plateforme de télémédecine ayant facilité plus d'1 million d'interventions médicales et 200 000+ télé-expertises avec des spécialistes — projet particulièrement impactant lors du séisme de Marrakech en 2023",
+        "Intégration de dispositifs médicaux à IA native pour la télédiagnostique et le suivi patient à distance",
+        "Livraison de fonctionnalités full-stack bout-en-bout (React.js, Node.js) en méthodologie Agile, de la spécification à la mise en production",
       ],
     },
     {
@@ -118,9 +120,9 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Jan 2022 — Mar 2023',
       logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDeShVCtZHpRFBYcO32O89EmsabzU6voOFxA&s',
       bullets: [
-        "Amélioration des plateformes de réservation ferroviaire ONCF Voyages et Supratours, optimisant l'expérience utilisateur et la conversion pour des millions de voyageurs",
+        "Consultant sur les plateformes e-commerce ferroviaires nationales du Maroc (ONCF Voyages & Supratours), optimisant l'expérience utilisateur et la conversion pour des millions de voyageurs",
+        "Encadrement d'une équipe de jeunes ingénieurs et stagiaires, les accompagnant jusqu'à la reprise complète de la mission en autonomie",
         "Mise en place de la localisation RTL en langue arabe sur l'ensemble de la plateforme, élargissant l'accessibilité à la majorité arabophone du Maroc",
-        'Conseil en stratégie UX pour la refonte du portail marchand, en traduisant des recherches utilisateurs complexes en décisions techniques actionnables',
       ],
     },
     {
@@ -138,16 +140,24 @@ export const experience: Record<Lang, ExpEntry[]> = {
 
 export const skills: Record<Lang, SkillRow[]> = {
   en: [
-    { cat: 'Front-End', items: 'React, Next.js, React Native, TypeScript, Vue.js, HTML/CSS' },
-    { cat: 'Back-End', items: 'Node.js, Python (Django, FastAPI), Express' },
-    { cat: 'Databases', items: 'PostgreSQL, MongoDB, Redis, MySQL' },
-    { cat: 'Tools & Cloud', items: 'AWS, Docker, Directus CMS, Git, WebSockets, CRDT' },
+    { cat: 'Front-End', items: 'React.js, Next.js, Vue.js, Nuxt.js, React Native, TypeScript' },
+    { cat: 'Back-End', items: 'Node.js, Express.js, Python (Django, FastAPI), Laravel, REST APIs' },
+    { cat: 'Styling & Design', items: 'TailwindCSS, CSS / SASS, Figma' },
+    { cat: 'Cloud & DevOps', items: 'AWS, Digital Ocean, Vercel, Docker, Kubernetes, Terraform, CI/CD, Git / GitHub' },
+    { cat: 'Testing', items: 'Jest' },
+    { cat: 'Databases & BaaS', items: 'PostgreSQL, MySQL, Microsoft SQL Server, MongoDB, GraphQL, Firebase, Supabase, Drizzle' },
+    { cat: 'AI & ML', items: 'OpenAI API, LangChain, Hugging Face, Pinecone, RAG, LLM Integration, Prompt Engineering, AI Agents' },
+    { cat: 'Languages', items: 'Arabic (Native), French (Fluent), English (Fluent), Spanish (Beginner), German (Beginner)' },
   ],
   fr: [
-    { cat: 'Front-End', items: 'React, Next.js, React Native, TypeScript, Vue.js, HTML/CSS' },
-    { cat: 'Back-End', items: 'Node.js, Python (Django, FastAPI), Express' },
-    { cat: 'Bases de données', items: 'PostgreSQL, MongoDB, Redis, MySQL' },
-    { cat: 'Outils & Cloud', items: 'AWS, Docker, Directus CMS, Git, WebSockets, CRDT' },
+    { cat: 'Front-End', items: 'React.js, Next.js, Vue.js, Nuxt.js, React Native, TypeScript' },
+    { cat: 'Back-End', items: 'Node.js, Express.js, Python (Django, FastAPI), Laravel, REST APIs' },
+    { cat: 'Style & Design', items: 'TailwindCSS, CSS / SASS, Figma' },
+    { cat: 'Cloud & DevOps', items: 'AWS, Digital Ocean, Vercel, Docker, Kubernetes, Terraform, CI/CD, Git / GitHub' },
+    { cat: 'Tests', items: 'Jest' },
+    { cat: 'Bases de données & BaaS', items: 'PostgreSQL, MySQL, Microsoft SQL Server, MongoDB, GraphQL, Firebase, Supabase, Drizzle' },
+    { cat: 'IA & ML', items: 'OpenAI API, LangChain, Hugging Face, Pinecone, RAG, Intégration LLM, Prompt Engineering, Agents IA' },
+    { cat: 'Langues', items: 'Arabe (natif), Français (courant), Anglais (courant), Espagnol (débutant), Allemand (débutant)' },
   ],
 };
 
@@ -160,8 +170,8 @@ export const projects: ProjectEntry[] = [
     link: 'https://apps.apple.com/us/app/heald-put-yourself-first/id6756617487',
     github: null,
     resumeBullets: {
-      en: ['Health & fitness iOS app published on the App Store, built with React Native'],
-      fr: ["Application iOS santé & bien-être publiée sur l'App Store, développée avec React Native"],
+      en: ['Health & fitness iOS app published on the App Store (5.0 ★), built with React Native — AI-powered emotional recovery tracking and journaling'],
+      fr: ["Application iOS santé & bien-être publiée sur l'App Store (5.0 ★), développée avec React Native — suivi de rétablissement émotionnel et journal personnel assisté par IA"],
     },
   },
   {
@@ -172,8 +182,8 @@ export const projects: ProjectEntry[] = [
     link: 'https://apps.apple.com/ma/app/blink-premium/id1482286159',
     github: null,
     resumeBullets: {
-      en: ['Cross-platform mobile app for the Blink Pharma ecosystem, published on the App Store'],
-      fr: ["Application mobile cross-platform pour l'écosystème Blink Pharma, publiée sur l'App Store"],
+      en: ['Medical iOS app for the Moroccan pharmaceutical market, live on the App Store — actively maintained across 25+ releases, serving pharmacies with marketplace access and medical tools'],
+      fr: ["Application iOS médicale pour le marché pharmaceutique marocain, publiée sur l'App Store — maintenue activement sur 25+ versions, au service des pharmacies avec accès marketplace et outils médicaux"],
     },
   },
   {
