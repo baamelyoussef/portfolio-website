@@ -107,6 +107,7 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
               <div style={s.expList}>
                 {exp.map((entry) => (
                   <div key={entry.company} style={s.expCard}>
+                    {/* Logo header */}
                     <div style={s.expLogoWrap}>
                       {entry.logo ? (
                         <img src={entry.logo} alt={entry.company} style={s.expLogo} />
@@ -116,12 +117,13 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
                         </div>
                       )}
                     </div>
+                    {/* Meta + bullets */}
                     <div style={s.expBody}>
                       <div style={s.expTop}>
-                        <span style={s.cardRole}>{entry.role}</span>
+                        <span style={s.cardCompany}>{entry.company}</span>
                         <span style={s.cardPeriod}>{entry.period}</span>
                       </div>
-                      <span style={s.cardCompany}>{entry.company}</span>
+                      <span style={s.cardRole}>{entry.role}</span>
                       <ul style={s.bulletList}>
                         {entry.bullets.map((b, i) => (
                           <li key={i} style={s.bulletItem}>{b}</li>
@@ -363,34 +365,34 @@ const s: { [key: string]: React.CSSProperties } = {
     background: '#fff',
     border: '1px solid rgba(0,0,0,0.07)',
     borderRadius: '10px',
-    padding: '20px',
     display: 'flex',
-    gap: '16px',
+    flexDirection: 'column',
     boxSizing: 'border-box',
     boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+    overflow: 'hidden',
   },
   expLogoWrap: {
-    width: '120px',
-    height: '120px',
-    borderRadius: '10px',
-    flexShrink: 0,
-    background: '#fff',
-    border: '1px solid rgba(0,0,0,0.07)',
+    width: '100%',
+    height: '80px',
+    background: '#fafaf8',
+    borderBottom: '1px solid rgba(0,0,0,0.06)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '8px',
+    padding: '12px 24px',
     boxSizing: 'border-box',
+    flexShrink: 0,
   },
   expLogo: {
-    width: '100%',
-    height: '100%',
+    maxHeight: '100%',
+    maxWidth: '160px',
     objectFit: 'contain',
     display: 'block',
   },
   expLogoFallback: {
-    width: '100%',
-    height: '100%',
+    width: '48px',
+    height: '48px',
+    borderRadius: '8px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -406,8 +408,7 @@ const s: { [key: string]: React.CSSProperties } = {
     display: 'flex',
     flexDirection: 'column',
     gap: '4px',
-    flex: 1,
-    minWidth: 0,
+    padding: '16px 20px 20px',
   },
   expTop: {
     display: 'flex',
@@ -417,20 +418,21 @@ const s: { [key: string]: React.CSSProperties } = {
     gap: '4px',
   },
   cardRole: {
-    fontWeight: 700,
-    fontSize: '0.9rem',
-    color: '#111',
+    fontSize: '0.76rem',
+    color: 'rgba(0,0,0,0.4)',
     fontFamily: 'monospace',
+    fontStyle: 'italic',
   },
   cardPeriod: {
-    fontSize: '0.7rem',
-    color: 'rgba(0,0,0,0.35)',
+    fontSize: '0.68rem',
+    color: 'rgba(0,0,0,0.3)',
     fontFamily: 'monospace',
     flexShrink: 0,
   },
   cardCompany: {
-    fontSize: '0.78rem',
-    color: 'rgba(0,0,0,0.5)',
+    fontWeight: 700,
+    fontSize: '0.88rem',
+    color: '#111',
     fontFamily: 'monospace',
   },
   bulletList: {
