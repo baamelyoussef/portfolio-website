@@ -34,6 +34,7 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [showResume, setShowResume] = useState(false);
+  const [immersiveBarOpen, setImmersiveBarOpen] = useState(true);
 
   const t = UI[lang];
   const exp = experience[lang];
@@ -63,20 +64,18 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
   return (
     <>
       <div style={s.root}>
-        <div style={s.scroll}>
+        <div style={{ ...s.scroll, paddingBottom: isMobile && immersiveBarOpen ? '56px' : 0 }}>
 
           {/* NAV */}
           <nav style={s.nav}>
             <div style={{ ...s.innerFlex, padding: isMobile ? '0 16px' : '0 32px' }}>
               {isMobile ? (
                 <>
-                  <button className="spin-btn" onClick={onEnter}>
-                    <span className="spin-btn-inner">✦ Try Immersive</span>
-                  </button>
-                  <div style={{ ...s.navLinks, gap: '10px' }}>
-                    <a href="#experience" style={{ ...s.navLink, fontSize: '0.6rem' }} onClick={scrollTo('experience')}>{t.nav.experience}</a>
-                    <a href="#work" style={{ ...s.navLink, fontSize: '0.6rem' }} onClick={scrollTo('work')}>{t.nav.projects}</a>
-                    <a href="#contact" style={{ ...s.navLink, fontSize: '0.6rem' }} onClick={scrollTo('contact')}>{t.nav.contact}</a>
+                  <span style={{ ...s.navName, fontSize: '0.75rem' }}>Youssef Baamel</span>
+                  <div style={{ ...s.navLinks, gap: '14px' }}>
+                    <a href="#experience" style={{ ...s.navLink, fontSize: '0.68rem' }} onClick={scrollTo('experience')}>{t.nav.experience}</a>
+                    <a href="#work" style={{ ...s.navLink, fontSize: '0.68rem' }} onClick={scrollTo('work')}>{t.nav.projects}</a>
+                    <a href="#contact" style={{ ...s.navLink, fontSize: '0.68rem' }} onClick={scrollTo('contact')}>{t.nav.contact}</a>
                     <button style={s.langToggle} onClick={switchLang}>
                       <span style={{ color: lang === 'en' ? '#111' : 'rgba(0,0,0,0.3)' }}>EN</span>
                       <span style={{ color: 'rgba(0,0,0,0.2)', fontSize: '0.55rem' }}>|</span>
@@ -201,6 +200,28 @@ const LandingPage: React.FC<Props> = ({ onEnter }) => {
 
       {!isMobile && <FloatingPreview onEnter={onEnter} videoSrc="/videos/preview-ix.mp4" />}
       {INTRO_VIDEO_SRC && <IntroVideo isMobile={isMobile} videoSrc={INTRO_VIDEO_SRC} />}
+
+      {/* Mobile immersive bar */}
+      {isMobile && (
+        immersiveBarOpen ? (
+          <div style={s.immersiveBar}>
+            <button
+              style={s.immersiveBarClose}
+              onClick={() => setImmersiveBarOpen(false)}
+              aria-label="Dismiss"
+            >
+              ←
+            </button>
+            <button style={s.immersiveBarAction} onClick={onEnter}>
+              ✦&nbsp;&nbsp;Try Immersive
+            </button>
+          </div>
+        ) : (
+          <button className="immersive-fab" onClick={onEnter} aria-label="Try Immersive">
+            <span className="immersive-fab-inner">✦</span>
+          </button>
+        )
+      )}
 
       {showResume && <ResumeView lang={lang} onClose={() => setShowResume(false)} />}
 
@@ -656,6 +677,45 @@ const s: { [key: string]: React.CSSProperties } = {
     borderRadius: '8px',
     border: '1px solid rgba(0,0,0,0.15)',
     letterSpacing: '0.03em',
+  },
+  immersiveBar: {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '56px',
+    background: '#111',
+    display: 'flex',
+    alignItems: 'stretch',
+    zIndex: 10000,
+    borderTop: '1px solid rgba(255,255,255,0.08)',
+  },
+  immersiveBarClose: {
+    width: '52px',
+    flexShrink: 0,
+    background: 'none',
+    border: 'none',
+    borderRight: '1px solid rgba(255,255,255,0.1)',
+    color: 'rgba(255,255,255,0.45)',
+    fontSize: '1.05rem',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  immersiveBarAction: {
+    flex: 1,
+    background: 'none',
+    border: 'none',
+    color: '#fff',
+    fontFamily: 'monospace',
+    fontSize: '0.78rem',
+    letterSpacing: '0.06em',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: '20px',
+    gap: '8px',
   },
 };
 
