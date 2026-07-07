@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react';
-import { Lang, experience, skills, projects, UI } from '../data';
+import { Lang, experience, skills, UI } from '../data';
 
 interface Props {
   lang: Lang;
   onClose: () => void;
 }
 
-const RESUME_PROJECTS = ['Debrief', 'Syncboard', 'Heald — Put Yourself First'];
-
 const ResumeView: React.FC<Props> = ({ lang, onClose }) => {
   const t = UI[lang];
   const exp = experience[lang];
   const sk = skills[lang];
-  const resumeProjects = projects.filter((p) => RESUME_PROJECTS.includes(p.title));
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
@@ -60,34 +57,6 @@ const ResumeView: React.FC<Props> = ({ lang, onClose }) => {
               <div style={s.entryRole}>{e.role}</div>
               <ul style={s.bullets}>
                 {e.bullets.map((b, i) => (
-                  <li key={i} style={s.bullet}>{b}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </section>
-
-        {/* Projects */}
-        <section style={s.section}>
-          <h2 style={s.sectionHeading}>{t.resumeUI.projects}</h2>
-          <hr style={s.rule} />
-          {resumeProjects.map((p) => (
-            <div key={p.title} style={s.entry}>
-              <div style={s.entryHeader}>
-                <span style={s.entryCompany}>
-                  {p.title}
-                  {p.link && (
-                    <a href={p.link} style={s.projectLink} target="_blank" rel="noreferrer"> ↗</a>
-                  )}
-                  {p.github && (
-                    <a href={p.github} style={s.projectLink} target="_blank" rel="noreferrer"> · GitHub ↗</a>
-                  )}
-                </span>
-                <span style={s.entryPeriod}>{p.year}</span>
-              </div>
-              <div style={s.entryRole}>{p.tags}</div>
-              <ul style={s.bullets}>
-                {p.resumeBullets[lang].map((b, i) => (
                   <li key={i} style={s.bullet}>{b}</li>
                 ))}
               </ul>
@@ -257,13 +226,6 @@ const s: { [k: string]: React.CSSProperties } = {
     lineHeight: 1.5,
     marginBottom: '2px',
     fontFamily: '"Georgia", serif',
-  },
-  projectLink: {
-    color: '#1a1a8c',
-    textDecoration: 'none',
-    fontWeight: 400,
-    fontSize: '0.82rem',
-    fontFamily: 'monospace',
   },
   skillsTable: {
     borderCollapse: 'collapse',
