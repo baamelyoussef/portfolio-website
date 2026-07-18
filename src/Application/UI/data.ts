@@ -28,10 +28,10 @@ export const experience: Record<Lang, ExpEntry[]> = {
     {
       role: 'Front-End Engineer',
       company: 'BTECHNOLOGIE · Bouygues Telecom × Accenture',
-      period: 'Jan 2025 — Present',
+      period: 'Jan 2025 - Present',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Bouygues_Telecom_%28alt_logo%29.svg/1280px-Bouygues_Telecom_%28alt_logo%29.svg.png',
       bullets: [
-        'Led front-end delivery of web & mobile applications for Bouygues Telecom — platforms serving 15.8M quarterly visitors (SimilarWeb verified) — using React, Next.js, and TypeScript',
+        'Led front-end delivery of web & mobile applications for Bouygues Telecom, platforms serving 15.8M quarterly visitors (SimilarWeb verified), using React, Next.js, and TypeScript',
         'Architected a Directus-powered CMS partials system enabling content teams to ship autonomously at scale while preserving engineering standards',
         'Integrated AWS backend services for asset processing and high-traffic delivery in a demanding production environment',
       ],
@@ -39,10 +39,10 @@ export const experience: Record<Lang, ExpEntry[]> = {
     {
       role: 'Full-Stack Engineer',
       company: '1450 Factory · Blink Pharma',
-      period: 'Sep 2023 — Sep 2024',
+      period: 'Sep 2023 - Sep 2024',
       logo: 'https://dharab.com/wp-content/uploads/2023/12/blinkpharma-square.png',
       bullets: [
-        "Drove full-stack development of blinkpharma.ma — Morocco's leading digital pharma platform — built on a Next.js fullstack architecture",
+        "Drove full-stack development of blinkpharma.ma, Morocco's leading digital pharma platform, built on a Next.js fullstack architecture",
         'Built and shipped cross-platform mobile applications for pharmaceutical clients operating under strict regulatory and quality requirements',
         'Owned the entire technical stack using React Native, Node.js, PostgreSQL, and MongoDB, from database modelling to production deployment',
       ],
@@ -50,10 +50,10 @@ export const experience: Record<Lang, ExpEntry[]> = {
     {
       role: 'Full-Stack Engineer',
       company: 'MEDIOT',
-      period: 'Jun 2023 — Sep 2023',
+      period: 'Jun 2023 - Sep 2023',
       logo: 'https://media.licdn.com/dms/image/v2/C4D0BAQHBDG4j9Ggf-Q/company-logo_200_200/company-logo_200_200/0/1630548813412/mediot_technology_logo?e=1784160000&v=beta&t=1oTBbFAMsfLnPo9XEJ2GKNG3I7Uqk82MGzm0QPbJp6Y',
       bullets: [
-        'Built a telemedicine platform that facilitated over 1M medical interventions and 200,000+ tele-expertises with specialists — one of the most impactful projects of my career, particularly during the 2023 Marrakesh earthquake when it helped deliver care to people in disrupted areas',
+        'Built a telemedicine platform that facilitated over 1M medical interventions and 200,000+ tele-expertises with specialists, one of the most impactful projects of my career, particularly during the 2023 Marrakesh earthquake when it helped deliver care to people in disrupted areas',
         'Integrated AI-native medical devices to support remote diagnostics and patient monitoring',
         'Delivered full-stack features end to end using React.js and Node.js in Agile sprints, from specification to production',
       ],
@@ -61,22 +61,22 @@ export const experience: Record<Lang, ExpEntry[]> = {
     {
       role: 'Full-Stack Engineer',
       company: 'Algo Consulting Group · ONCF',
-      period: 'Jan 2022 — Mar 2023',
+      period: 'Jan 2022 - Mar 2023',
       logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDeShVCtZHpRFBYcO32O89EmsabzU6voOFxA&s',
       bullets: [
         'Consultant on Morocco\'s national railway e-commerce platforms (ONCF Voyages & Supratours), improving user experience and conversion for millions of travellers',
-        'Sub-managed a team of junior engineers and interns, onboarding and guiding them through delivery — the team later took over the mission full-time',
+        'Sub-managed a team of junior engineers and interns, onboarding and guiding them through delivery, and the team later took over the mission full-time',
         "Implemented RTL Arabic localization across the full platform, extending accessibility to Morocco's Arabic-speaking majority",
       ],
     },
     {
       role: 'Full-Stack Developer',
       company: 'Freelance',
-      period: 'Feb 2020 — Dec 2021',
+      period: 'Feb 2020 - Dec 2021',
       logo: null,
       bullets: [
         'Delivered diverse full-stack projects using Python, Node.js, React.js, Vue.js, and MongoDB for clients across varied industries',
-        'Managed full technical ownership — from architecture and development to delivery — across greenfield builds, CMS integrations, and legacy migrations',
+        'Managed full technical ownership, from architecture and development to delivery, across greenfield builds, CMS integrations, and legacy migrations',
       ],
     },
   ],
@@ -84,10 +84,10 @@ export const experience: Record<Lang, ExpEntry[]> = {
     {
       role: 'Ingénieur Front-End',
       company: 'BTECHNOLOGIE · Bouygues Telecom × Accenture',
-      period: 'Jan 2025 — Présent',
+      period: 'Jan 2025 - Présent',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Bouygues_Telecom_%28alt_logo%29.svg/1280px-Bouygues_Telecom_%28alt_logo%29.svg.png',
       bullets: [
-        "Développement et livraison des applications web & mobile pour Bouygues Telecom — plateformes totalisant 15,8M de visiteurs trimestriels (SimilarWeb vérifié) — avec React, Next.js et TypeScript",
+        "Développement et livraison des applications web & mobile pour Bouygues Telecom, plateformes totalisant 15,8M de visiteurs trimestriels (SimilarWeb vérifié), avec React, Next.js et TypeScript",
         "Conception d'un système de partials piloté par le CMS headless Directus, permettant aux équipes contenu de livrer de façon autonome à l'échelle tout en maintenant les standards d'ingénierie",
         "Intégration des services AWS pour le traitement des assets et la livraison à fort trafic dans un environnement de production exigeant",
       ],
@@ -95,10 +95,10 @@ export const experience: Record<Lang, ExpEntry[]> = {
     {
       role: 'Ingénieur Full-Stack',
       company: '1450 Factory · Blink Pharma',
-      period: 'Sep 2023 — Sep 2024',
+      period: 'Sep 2023 - Sep 2024',
       logo: 'https://dharab.com/wp-content/uploads/2023/12/blinkpharma-square.png',
       bullets: [
-        "Pilotage du développement full-stack de blinkpharma.ma — principale plateforme pharmaceutique digitale du Maroc — construite sur une architecture Next.js fullstack",
+        "Pilotage du développement full-stack de blinkpharma.ma, principale plateforme pharmaceutique digitale du Maroc, construite sur une architecture Next.js fullstack",
         "Développement et livraison d'applications mobiles cross-platform pour des clients pharmaceutiques soumis à des exigences réglementaires et qualité strictes",
         "Maîtrise de l'ensemble de la stack technique (React Native, Node.js, PostgreSQL, MongoDB) de la modélisation des données au déploiement en production",
       ],
@@ -106,10 +106,10 @@ export const experience: Record<Lang, ExpEntry[]> = {
     {
       role: 'Ingénieur Full-Stack',
       company: 'MEDIOT',
-      period: 'Juin 2023 — Sep 2023',
+      period: 'Juin 2023 - Sep 2023',
       logo: 'https://media.licdn.com/dms/image/v2/C4D0BAQHBDG4j9Ggf-Q/company-logo_200_200/company-logo_200_200/0/1630548813412/mediot_technology_logo?e=1784160000&v=beta&t=1oTBbFAMsfLnPo9XEJ2GKNG3I7Uqk82MGzm0QPbJp6Y',
       bullets: [
-        "Développement d'une plateforme de télémédecine ayant facilité plus d'1 million d'interventions médicales et 200 000+ télé-expertises avec des spécialistes — projet particulièrement impactant lors du séisme de Marrakech en 2023",
+        "Développement d'une plateforme de télémédecine ayant facilité plus d'1 million d'interventions médicales et 200 000+ télé-expertises avec des spécialistes, projet particulièrement impactant lors du séisme de Marrakech en 2023",
         "Intégration de dispositifs médicaux à IA native pour la télédiagnostique et le suivi patient à distance",
         "Livraison de fonctionnalités full-stack bout-en-bout (React.js, Node.js) en méthodologie Agile, de la spécification à la mise en production",
       ],
@@ -117,7 +117,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
     {
       role: 'Ingénieur Full-Stack',
       company: 'Algo Consulting Group · ONCF',
-      period: 'Jan 2022 — Mar 2023',
+      period: 'Jan 2022 - Mar 2023',
       logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDeShVCtZHpRFBYcO32O89EmsabzU6voOFxA&s',
       bullets: [
         "Consultant sur les plateformes e-commerce ferroviaires nationales du Maroc (ONCF Voyages & Supratours), optimisant l'expérience utilisateur et la conversion pour des millions de voyageurs",
@@ -128,11 +128,11 @@ export const experience: Record<Lang, ExpEntry[]> = {
     {
       role: 'Développeur Full-Stack',
       company: 'Freelance',
-      period: 'Fév 2020 — Déc 2021',
+      period: 'Fév 2020 - Déc 2021',
       logo: null,
       bullets: [
         "Réalisation de projets full-stack variés (Python, Node.js, React.js, Vue.js, MongoDB) pour des clients de secteurs d'activité divers",
-        "Propriété technique complète — de l'architecture au déploiement — sur des projets from scratch, des intégrations CMS et des migrations de systèmes existants",
+        "Propriété technique complète, de l'architecture au déploiement, sur des projets from scratch, des intégrations CMS et des migrations de systèmes existants",
       ],
     },
   ],
@@ -163,15 +163,15 @@ export const skills: Record<Lang, SkillRow[]> = {
 
 export const projects: ProjectEntry[] = [
   {
-    title: 'Heald — Put Yourself First',
+    title: 'Heald: Put Yourself First',
     tags: 'React Native · iOS · Health & Fitness',
     year: '2025',
     bg: '/images/heald-preview.png',
     link: 'https://apps.apple.com/us/app/heald-put-yourself-first/id6756617487',
     github: null,
     resumeBullets: {
-      en: ['Health & fitness iOS app published on the App Store (5.0 ★), built with React Native — AI-powered emotional recovery tracking and journaling'],
-      fr: ["Application iOS santé & bien-être publiée sur l'App Store (5.0 ★), développée avec React Native — suivi de rétablissement émotionnel et journal personnel assisté par IA"],
+      en: ['Health & fitness iOS app published on the App Store (5.0 ★), built with React Native for AI-powered emotional recovery tracking and journaling'],
+      fr: ["Application iOS santé & bien-être publiée sur l'App Store (5.0 ★), développée avec React Native pour le suivi de rétablissement émotionnel et le journal personnel assisté par IA"],
     },
   },
   {
@@ -182,8 +182,8 @@ export const projects: ProjectEntry[] = [
     link: 'https://apps.apple.com/ma/app/blink-premium/id1482286159',
     github: null,
     resumeBullets: {
-      en: ['Medical iOS app for the Moroccan pharmaceutical market, live on the App Store — actively maintained across 25+ releases, serving pharmacies with marketplace access and medical tools'],
-      fr: ["Application iOS médicale pour le marché pharmaceutique marocain, publiée sur l'App Store — maintenue activement sur 25+ versions, au service des pharmacies avec accès marketplace et outils médicaux"],
+      en: ['Medical iOS app for the Moroccan pharmaceutical market, live on the App Store and actively maintained across 25+ releases, serving pharmacies with marketplace access and medical tools'],
+      fr: ["Application iOS médicale pour le marché pharmaceutique marocain, publiée sur l'App Store et maintenue activement sur 25+ versions, au service des pharmacies avec accès marketplace et outils médicaux"],
     },
   },
   {
@@ -195,11 +195,11 @@ export const projects: ProjectEntry[] = [
     github: 'https://github.com/baamelyoussef/debrief',
     resumeBullets: {
       en: [
-        'AI-powered meeting intelligence tool — real-time audio transcription via OpenAI Whisper with structured summaries and action items',
+        'AI-powered meeting intelligence tool with real-time audio transcription via OpenAI Whisper, structured summaries, and action items',
         'Full-stack architecture: React frontend, Node.js API, PostgreSQL + Redis, containerised with Docker',
       ],
       fr: [
-        "Outil d'intelligence réunion par IA — transcription audio en temps réel via OpenAI Whisper avec résumés structurés et points d'action",
+        "Outil d'intelligence réunion par IA avec transcription audio en temps réel via OpenAI Whisper, résumés structurés et points d'action",
         "Architecture full-stack : frontend React, API Node.js, PostgreSQL + Redis, conteneurisée avec Docker",
       ],
     },
