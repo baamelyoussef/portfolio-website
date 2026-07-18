@@ -42,7 +42,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Sep 2023 — Sep 2024',
       logo: 'https://dharab.com/wp-content/uploads/2023/12/blinkpharma-square.png',
       bullets: [
-        "Drove full-stack development of blinkpharma.ma — Morocco's leading digital pharma platform — from an initial Python backend through a complete migration to a Next.js fullstack architecture",
+        "Drove full-stack development of blinkpharma.ma — Morocco's leading digital pharma platform — built on a Next.js fullstack architecture",
         'Built and shipped cross-platform mobile applications for pharmaceutical clients operating under strict regulatory and quality requirements',
         'Owned the entire technical stack using React Native, Node.js, PostgreSQL, and MongoDB, from database modelling to production deployment',
       ],
@@ -98,7 +98,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Sep 2023 — Sep 2024',
       logo: 'https://dharab.com/wp-content/uploads/2023/12/blinkpharma-square.png',
       bullets: [
-        "Pilotage du développement full-stack de blinkpharma.ma — principale plateforme pharmaceutique digitale du Maroc — depuis le backend Python initial jusqu'à la migration complète vers une architecture Next.js",
+        "Pilotage du développement full-stack de blinkpharma.ma — principale plateforme pharmaceutique digitale du Maroc — construite sur une architecture Next.js fullstack",
         "Développement et livraison d'applications mobiles cross-platform pour des clients pharmaceutiques soumis à des exigences réglementaires et qualité strictes",
         "Maîtrise de l'ensemble de la stack technique (React Native, Node.js, PostgreSQL, MongoDB) de la modélisation des données au déploiement en production",
       ],
