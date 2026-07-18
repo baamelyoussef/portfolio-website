@@ -42,7 +42,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Sep 2023 — Sep 2024',
       logo: 'https://dharab.com/wp-content/uploads/2023/12/blinkpharma-square.png',
       bullets: [
-        "Drove full-stack development of blinkpharma.ma — Morocco's leading digital pharma platform — from an initial Python/Django backend through a complete migration to a Next.js fullstack architecture",
+        "Drove full-stack development of blinkpharma.ma — Morocco's leading digital pharma platform — from an initial Python backend through a complete migration to a Next.js fullstack architecture",
         'Built and shipped cross-platform mobile applications for pharmaceutical clients operating under strict regulatory and quality requirements',
         'Owned the entire technical stack using React Native, Node.js, PostgreSQL, and MongoDB, from database modelling to production deployment',
       ],
@@ -75,7 +75,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Feb 2020 — Dec 2021',
       logo: null,
       bullets: [
-        'Delivered diverse full-stack projects using Python (Django), Node.js, React.js, Vue.js, and MongoDB for clients across varied industries',
+        'Delivered diverse full-stack projects using Python, Node.js, React.js, Vue.js, and MongoDB for clients across varied industries',
         'Managed full technical ownership — from architecture and development to delivery — across greenfield builds, CMS integrations, and legacy migrations',
       ],
     },
@@ -98,7 +98,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Sep 2023 — Sep 2024',
       logo: 'https://dharab.com/wp-content/uploads/2023/12/blinkpharma-square.png',
       bullets: [
-        "Pilotage du développement full-stack de blinkpharma.ma — principale plateforme pharmaceutique digitale du Maroc — depuis le backend Python/Django initial jusqu'à la migration complète vers une architecture Next.js",
+        "Pilotage du développement full-stack de blinkpharma.ma — principale plateforme pharmaceutique digitale du Maroc — depuis le backend Python initial jusqu'à la migration complète vers une architecture Next.js",
         "Développement et livraison d'applications mobiles cross-platform pour des clients pharmaceutiques soumis à des exigences réglementaires et qualité strictes",
         "Maîtrise de l'ensemble de la stack technique (React Native, Node.js, PostgreSQL, MongoDB) de la modélisation des données au déploiement en production",
       ],
@@ -131,7 +131,7 @@ export const experience: Record<Lang, ExpEntry[]> = {
       period: 'Fév 2020 — Déc 2021',
       logo: null,
       bullets: [
-        "Réalisation de projets full-stack variés (Python/Django, Node.js, React.js, Vue.js, MongoDB) pour des clients de secteurs d'activité divers",
+        "Réalisation de projets full-stack variés (Python, Node.js, React.js, Vue.js, MongoDB) pour des clients de secteurs d'activité divers",
         "Propriété technique complète — de l'architecture au déploiement — sur des projets from scratch, des intégrations CMS et des migrations de systèmes existants",
       ],
     },
@@ -140,8 +140,8 @@ export const experience: Record<Lang, ExpEntry[]> = {
 
 export const skills: Record<Lang, SkillRow[]> = {
   en: [
-    { cat: 'Front-End', items: 'React.js, Next.js, Vue.js, Nuxt.js, React Native, TypeScript' },
-    { cat: 'Back-End', items: 'Node.js, Express.js, Python (Django, FastAPI), Laravel, REST APIs' },
+    { cat: 'Front-End', items: 'React.js, Next.js, Vue.js, Nuxt.js, React Native, Electron, TypeScript' },
+    { cat: 'Back-End', items: 'Node.js, Express.js, Python, Laravel, REST APIs' },
     { cat: 'Styling & Design', items: 'TailwindCSS, CSS / SASS, Figma' },
     { cat: 'Cloud & DevOps', items: 'AWS, Digital Ocean, Vercel, Docker, Kubernetes, Terraform, CI/CD, Git / GitHub' },
     { cat: 'Testing', items: 'Jest' },
@@ -150,8 +150,8 @@ export const skills: Record<Lang, SkillRow[]> = {
     { cat: 'Languages', items: 'Arabic (Native), French (Fluent), English (Fluent), Spanish (Beginner), German (Beginner)' },
   ],
   fr: [
-    { cat: 'Front-End', items: 'React.js, Next.js, Vue.js, Nuxt.js, React Native, TypeScript' },
-    { cat: 'Back-End', items: 'Node.js, Express.js, Python (Django, FastAPI), Laravel, REST APIs' },
+    { cat: 'Front-End', items: 'React.js, Next.js, Vue.js, Nuxt.js, React Native, Electron, TypeScript' },
+    { cat: 'Back-End', items: 'Node.js, Express.js, Python, Laravel, REST APIs' },
     { cat: 'Style & Design', items: 'TailwindCSS, CSS / SASS, Figma' },
     { cat: 'Cloud & DevOps', items: 'AWS, Digital Ocean, Vercel, Docker, Kubernetes, Terraform, CI/CD, Git / GitHub' },
     { cat: 'Tests', items: 'Jest' },
@@ -218,7 +218,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     title: 'Syncboard',
-    tags: 'React · Python · FastAPI · WebSockets · CRDT · Canvas · roughjs',
+    tags: 'React · Python · WebSockets · CRDT · Canvas · roughjs',
     year: '2026',
     bg: '/images/syncboard-preview.png',
     link: 'https://syncboard-teal.vercel.app/',
@@ -226,11 +226,11 @@ export const projects: ProjectEntry[] = [
     resumeBullets: {
       en: [
         'Real-time collaborative whiteboard with CRDT-based conflict-free concurrent editing over WebSockets',
-        'Full-stack: React canvas frontend, Python FastAPI backend, roughjs for hand-drawn aesthetics',
+        'Full-stack: React canvas frontend, Python backend, roughjs for hand-drawn aesthetics',
       ],
       fr: [
         'Tableau blanc collaboratif en temps réel avec résolution de conflits CRDT sur WebSockets',
-        'Architecture full-stack : canvas React, backend Python FastAPI, esthétique dessin main avec roughjs',
+        'Architecture full-stack : canvas React, backend Python, esthétique dessin main avec roughjs',
       ],
     },
   },
